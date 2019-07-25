@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
+import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
+import Moment from 'moment';
 
-const PACKAGE_ID_LABEL = "Packages ID";
-const PACKAGE_TYPE_LABEL = "Packages Type";
+const PACKAGE_ID_LABEL = "Package ID";
+const PACKAGE_TYPE_LABEL = "Package Type";
 const SUBMITTER_LABEL = "Submitter";
 const TIS_NAME_LABEL = "TIS Name";
 const DATE_SUBMITTED_LABEL = "Date Submitted";
 
-const PACKAGE_ID = "id";
+const PACKAGE_ID = "packageId";
 const SUBMITTER_ID = "displayName";
 const PACKAGE_TYPE_ID = "packageType";
 const TIS_NAME_ID = "tisName";
 const DATE_SUBMITTED_ID = "createdAt";
+const DATE_FORMAT = "MM/DD YYYY, h:mm a";
 
 // package id, submitter, package type, tis name, date submitted
 class PackageTable extends Component {
@@ -24,6 +27,7 @@ class PackageTable extends Component {
         this.onSortedChange = this.onSortedChange.bind(this);
         this.onFilteredChange = this.onFilteredChange.bind(this);
         this.resetFilterAndSort = this.resetFilterAndSort.bind(this);
+        this.defaultFilterMethod = this.defaultFilterMethod.bind(this);
         this.reactTable = React.createRef();
 
         this.state = {
@@ -60,30 +64,34 @@ class PackageTable extends Component {
                 id: DATE_SUBMITTED_ID,
                 accessor: (row) => {
                     //TODO format this
-                    return row[DATE_SUBMITTED_ID]
+                    return new Moment(row[DATE_SUBMITTED_ID]).format(DATE_FORMAT);
                 }
             }
         ];
     }
 
     onSortedChange(sorted) {
-        // ReactGA.event({
-        //     category: 'Data Table',
-        //     action: 'Sort Data'
-        // });
+        ReactGA.event({
+            category: 'Data Table',
+            action: 'Sort Data'
+        });
         this.setState({
             sorted: sorted
         });
     }
 
     onFilteredChange(filtered) {
-        // ReactGA.event({
-        //     category: 'Data Table',
-        //     action: 'Filter Data'
-        // });
+        ReactGA.event({
+            category: 'Data Table',
+            action: 'Filter Data'
+        });
         this.setState({
             filtered: filtered
         });
+    }
+
+    defaultFilterMethod(filter, row, column) {
+        return row[filter.id] && row[filter.id].indexOf(filter.value) > -1;
     }
 
     resetFilterAndSort() {
@@ -102,7 +110,8 @@ class PackageTable extends Component {
             onSortedChange={this.onSortedChange}
             onFilteredChange={this.onFilteredChange}
             columns={this.state.columns}
-            defaultPageSize={10}
+            defaultPageSize={12}
+            defaultFilterMethod={this.defaultFilterMethod}
             filterable
             className="-striped -highlight"
             showPageSizeOptions={false}

@@ -7,11 +7,11 @@ import appReducer from './reducers';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import ReactGA from 'react-ga';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import { Route, Switch, Router } from 'react-router-dom';
 import ErrorBoundaryContainer from './components/Error/ErrorBoundaryContainer';
 import Oops from './components/Error/Oops';
-import PackageDashboardPage from './components/PackageDashboard/PackageDashboardPage';
+import PackageDashboardPageContainer from './components/PackageDashboard/PackageDashboardPageContainer';
 
 const cacheStore = window.sessionStorage.getItem('redux-store');
 const initialState = cacheStore ? JSON.parse(cacheStore) : loadedState;
@@ -35,7 +35,7 @@ function logPageView(location, action) {
   ReactGA.set({ page: location.pathname + location.search });
   ReactGA.pageview(location.pathname + location.search);
 }
-const history = createHistory();
+const history = createBrowserHistory();
 history.listen((location, action) => {
   logPageView(location, action);
 });
@@ -58,7 +58,7 @@ class App extends Component {
           <ErrorBoundaryContainer>
             <NavBar />
             <Switch>
-              <Route exact path="/" component={PackageDashboardPage} store={store} />
+              <Route exact path="/" component={PackageDashboardPageContainer} store={store} />
               <Route exact path="/oops" component={Oops} />
             </Switch>
             <NavFooter />
