@@ -64,8 +64,6 @@ class PackageTable extends Component {
                 id: DATE_SUBMITTED_ID,
                 accessor: (row) => {
 
-                    console.log(row[DATE_SUBMITTED_ID]);
-
                     return new Moment(row[DATE_SUBMITTED_ID])
                         .local()
                         .format(DATE_FORMAT)
