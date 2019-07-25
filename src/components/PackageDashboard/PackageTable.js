@@ -15,7 +15,7 @@ const SUBMITTER_ID = "displayName";
 const PACKAGE_TYPE_ID = "packageType";
 const TIS_NAME_ID = "tisName";
 const DATE_SUBMITTED_ID = "createdAt";
-const DATE_FORMAT = "MM/DD YYYY, h:mm a";
+const DATE_FORMAT = "YYYY-MM-DD, h:mm a z";
 
 // package id, submitter, package type, tis name, date submitted
 class PackageTable extends Component {
@@ -63,8 +63,12 @@ class PackageTable extends Component {
                 Header: DATE_SUBMITTED_LABEL,
                 id: DATE_SUBMITTED_ID,
                 accessor: (row) => {
-                    //TODO format this
-                    return new Moment(row[DATE_SUBMITTED_ID]).format(DATE_FORMAT);
+
+                    console.log(row[DATE_SUBMITTED_ID]);
+
+                    return new Moment(row[DATE_SUBMITTED_ID])
+                        .local()
+                        .format(DATE_FORMAT)
                 }
             }
         ];
