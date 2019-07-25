@@ -1,3 +1,796 @@
 {
-
+  "packages": [
+    {
+      "packageId": "006f6cd5-0f00-4dff-b85c-fbca0c5a632a",
+      "createdAt": "2019-03-18T13:07:52.256+0000",
+      "packageType": "Spatial Metabolomics",
+      "submitter": {
+        "id": "5c49b80acb5e71004965b0f9",
+        "firstName": "Becky",
+        "lastName": "Steck",
+        "displayName": "Becky Steck",
+        "email": "roesch@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Tissue Processing Example V1,Multiplexed Droplet-based Single-cell RNASeq V1",
+      "subjectId": "18-142",
+      "experimentDate": null,
+      "description": "Fee-for-services resources?",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "0331ac82-c89e-4aee-acd8-4cdf9be89be8",
+      "createdAt": "2019-02-14T13:58:57.417+0000",
+      "packageType": "3-D tissue imaging",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "QA-KPMP-707",
+      "experimentDate": null,
+      "description": "QA test Chrome",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "0491bf3d-9d4e-489e-ac03-f7127fe3efbd",
+      "createdAt": "2019-03-15T20:58:07.888+0000",
+      "packageType": "Segmental miRNA",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Near Single-cell Proteomics Example V1,RNA Extraction Example V1",
+      "subjectId": "17-1606",
+      "experimentDate": null,
+      "description": "KPMP-721 test IE",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "0759e67e-5a19-49d4-bf3c-78a68533ba32",
+      "createdAt": "2019-02-14T14:10:57.565+0000",
+      "packageType": "Bulk total/mRNA",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "QA-KPMP-707",
+      "experimentDate": null,
+      "description": "QA Test IE",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "0909d964-c87d-45dd-8e3c-873d1a1264af",
+      "createdAt": "2019-02-07T13:48:07.819+0000",
+      "packageType": "Whole Slide Images",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Pilot 3",
+      "subjectId": "12345",
+      "experimentDate": null,
+      "description": "12345",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "0a0afd61-affe-4b01-abf1-316e13551782",
+      "createdAt": "2019-02-07T13:47:26.613+0000",
+      "packageType": "Near-single-cell Proteomics",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Pilot 3",
+      "subjectId": "QA on IE",
+      "experimentDate": null,
+      "description": "Hiya",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "0b6ade99-dc9f-4681-9ac1-621565feb071",
+      "createdAt": "2019-01-21T14:11:41.117+0000",
+      "packageType": "Whole Slide Images",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "QA-KPMP-418",
+      "experimentDate": null,
+      "description": "UX test Chrome",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "0cbee69f-1e6e-48d8-9949-77d711fa818e",
+      "createdAt": "2019-03-18T12:57:44.533+0000",
+      "packageType": "Single-cell RNA-Seq",
+      "submitter": {
+        "id": "5c49b80acb5e71004965b0f9",
+        "firstName": "Becky",
+        "lastName": "Steck",
+        "displayName": "Becky Steck",
+        "email": "roesch@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "RNA Extraction Example V2,RNA Isolation Example V2",
+      "subjectId": "18-162",
+      "experimentDate": null,
+      "description": "Mutual Learning, Growth Mindset, Transforming Mindset",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "0fa9735a-37f3-4e53-980e-ea358f16c077",
+      "createdAt": "2019-02-07T02:01:54.595+0000",
+      "packageType": "CODEX",
+      "submitter": {
+        "id": "5c5b9192cb5e71004821dc7e",
+        "firstName": "Ho Jung",
+        "lastName": "Choi",
+        "displayName": "Ho Jung Choi",
+        "email": "hojungc@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Pilot 2",
+      "subjectId": "REACH Sample Upload",
+      "experimentDate": "2019-02-18T00:00:00.000+0000",
+      "description": "REACH Sample Upload",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "18d9da3c-1b7b-42da-a08c-0810cc91ba47",
+      "createdAt": "2019-03-15T15:22:35.684+0000",
+      "packageType": "Sub-segmental RNA-Seq",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Protocol 1",
+      "subjectId": "17-1606",
+      "experimentDate": null,
+      "description": "gkfd;adlkfjgas",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "29a0376a-3fee-41c5-bcd0-1cff14f5c521",
+      "createdAt": "2019-02-26T17:41:19.511+0000",
+      "packageType": "Bulk total/mRNA",
+      "submitter": {
+        "id": "5c7575605471f40049a3341a",
+        "firstName": "Zachary",
+        "lastName": "Wright",
+        "displayName": "Zachary Charles Wright",
+        "email": "zwright@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Pilot 2",
+      "subjectId": "asdf",
+      "experimentDate": null,
+      "description": "asdfasdf",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "2d0cfd26-4eb1-44d5-a16f-722cd68d2eac",
+      "createdAt": "2019-01-21T14:21:51.234+0000",
+      "packageType": "Spatial Metabolomics",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "QA-KPMP-418",
+      "experimentDate": null,
+      "description": "UX test Firefox",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "3387add2-e3ee-4efc-a154-ec86b42fb787",
+      "createdAt": "2019-01-24T13:22:43.197+0000",
+      "packageType": "Bulk total/mRNA",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "1",
+      "experimentDate": null,
+      "description": "Yo!",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "379acee8-ab57-415b-b49a-7809504343b5",
+      "createdAt": "2019-02-15T15:13:01.345+0000",
+      "packageType": "Segmental miRNA",
+      "submitter": {
+        "id": "5c66d5decb5e710048509e77",
+        "firstName": "Rebecca",
+        "lastName": "Reamy",
+        "displayName": "Rebecca Reamy",
+        "email": "rlreamy@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "ijagljs",
+      "experimentDate": null,
+      "description": "lkjaslkjsdf",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "37ee6942-ff94-47c0-837a-76de34635a46",
+      "createdAt": "2019-03-15T13:15:06.263+0000",
+      "packageType": "3-D Tissue Imaging",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Multiplexed Droplet-based Single-cell RNASeq V1",
+      "subjectId": "17-1606",
+      "experimentDate": null,
+      "description": "test",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "3d5883d7-74be-4cc3-b4b8-cc06b82b5c8e",
+      "createdAt": "2019-02-07T13:48:53.783+0000",
+      "packageType": "Single-cell RNA-Seq",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Pilot 3",
+      "subjectId": "54321",
+      "experimentDate": "2019-02-06T00:00:00.000+0000",
+      "description": "54321",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "3f669d11-d3d2-4e2e-92bf-62d58215a374",
+      "createdAt": "2019-03-18T16:51:18.165+0000",
+      "packageType": "Spatial Metabolomics",
+      "submitter": {
+        "id": "5c49b80acb5e71004965b0f9",
+        "firstName": "Becky",
+        "lastName": "Steck",
+        "displayName": "Becky Steck",
+        "email": "roesch@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Near Single-cell Proteomics Example V1,Nuclei Isolation Example V1,Nuclei Isolation Example V2,Multiplexed Droplet-based Single-cell RNASeq V2",
+      "subjectId": "18-139",
+      "experimentDate": null,
+      "description": "Testing KPMP-721",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "4aafb462-9827-48b8-89b4-3913e2a60062",
+      "createdAt": "2019-01-24T13:24:07.815+0000",
+      "packageType": "DNA Methylation",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Pilot 3",
+      "subjectId": "12345",
+      "experimentDate": null,
+      "description": "12345",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "50c33bdc-8b59-43c7-902a-4411fa186a88",
+      "createdAt": "2019-01-24T13:05:14.282+0000",
+      "packageType": "Testing UTC Dates",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "KPMP-418",
+      "experimentDate": "2019-01-24T00:00:00.000+0000",
+      "description": "This too shall pass",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "57419a0f-5eec-4a68-a170-4fd0c7d85fd8",
+      "createdAt": "2019-02-26T18:04:40.175+0000",
+      "packageType": "Bulk total/mRNA",
+      "submitter": {
+        "id": "5c7575605471f40049a3341a",
+        "firstName": "Zachary",
+        "lastName": "Wright",
+        "displayName": "Zachary Charles Wright",
+        "email": "zwright@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Pilot 2",
+      "subjectId": "1234",
+      "experimentDate": null,
+      "description": "sdfgsd",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "684400ad-384f-42c0-8dcc-77d0960b604a",
+      "createdAt": "2019-03-18T18:07:07.844+0000",
+      "packageType": "3-D Tissue Imaging",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Multiplexed Droplet-based Single-cell RNASeq V1",
+      "subjectId": "17-1606",
+      "experimentDate": null,
+      "description": "DFASDFS",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "70b49bee-6a85-4b04-bc8c-3ecf26091f1f",
+      "createdAt": "2019-02-23T18:48:56.270+0000",
+      "packageType": "Spatial Metabolomics",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "UX test 1234",
+      "experimentDate": null,
+      "description": "test",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "830f17d0-9bbd-47d4-aa53-f0aa20e255eb",
+      "createdAt": "2019-03-15T15:13:43.086+0000",
+      "packageType": "Sub-segmental RNA-Seq",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Multiplexed Droplet-based Single-cell RNASeq V1",
+      "subjectId": "18-162",
+      "experimentDate": null,
+      "description": "UX test KPMP-721",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "86170922-ed69-4ac9-8d1b-50721cd8b0ff",
+      "createdAt": "2019-02-06T17:32:32.674+0000",
+      "packageType": "Whole Slide Images",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "QA-KPMP-583-FF",
+      "experimentDate": null,
+      "description": "UX QA Firefox",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "a1b8bd0b-2c00-4694-b208-1f4a8944ab7d",
+      "createdAt": "2019-02-20T14:11:51.246+0000",
+      "packageType": "Segmental miRNA",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Pilot 1",
+      "subjectId": "KPMP-471",
+      "experimentDate": "2019-02-19T00:00:00.000+0000",
+      "description": "Just a regression test on KPMP-471",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "b9a1f123-3ed0-44a7-a198-4353e08f66c3",
+      "createdAt": "2019-02-15T15:27:11.200+0000",
+      "packageType": "Multiplex ISH",
+      "submitter": {
+        "id": "5c66d5decb5e710048509e77",
+        "firstName": "Rebecca",
+        "lastName": "Reamy",
+        "displayName": "Rebecca Reamy",
+        "email": "rlreamy@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Protocol v1: Pathology MOP v1 ",
+      "subjectId": "stuff",
+      "experimentDate": "2019-02-08T00:00:00.000+0000",
+      "description": "howdy",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "bb3b978a-b88b-43a1-ab8c-c09ef70ca8d8",
+      "createdAt": "2019-02-06T17:19:42.854+0000",
+      "packageType": "Whole Slide Images",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "QA-KPMP-583 Chrome",
+      "experimentDate": "2019-02-06T00:00:00.000+0000",
+      "description": "UX QA - Chrome",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "c207526f-e02d-42c9-ad75-13a412fa41ec",
+      "createdAt": "2019-01-21T14:19:29.181+0000",
+      "packageType": "Bulk total/mRNA",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "QA-KPMP-418",
+      "experimentDate": null,
+      "description": "UX test IE",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "c85958d5-ec56-4f25-bbde-78bd8f998960",
+      "createdAt": "2019-03-18T15:52:32.855+0000",
+      "packageType": "Sub-segmental Proteomics",
+      "submitter": {
+        "id": "5c49b80acb5e71004965b0f9",
+        "firstName": "Becky",
+        "lastName": "Steck",
+        "displayName": "Becky Steck",
+        "email": "roesch@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Near Single-cell Proteomics Example V1,Tissue Processing Example V2",
+      "subjectId": "18-162",
+      "experimentDate": null,
+      "description": "Some good good data",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "d518458a-d993-4ad8-98b0-373b0edd4c54",
+      "createdAt": "2019-02-06T17:31:30.071+0000",
+      "packageType": "Whole Slide Images",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "QA-KPMP-538-IE",
+      "experimentDate": "2019-02-06T00:00:00.000+0000",
+      "description": "UX QA IE",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "d981ca6d-853b-4fbb-9dc8-984019107f75",
+      "createdAt": "2019-02-26T17:20:31.904+0000",
+      "packageType": "Bulk total/mRNA",
+      "submitter": {
+        "id": "5c7575605471f40049a3341a",
+        "firstName": "Zachary",
+        "lastName": "Wright",
+        "displayName": "Zachary Charles Wright",
+        "email": "zwright@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Pilot 2",
+      "subjectId": "1234",
+      "experimentDate": null,
+      "description": "asdfasdf",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "e45a0821-be0b-418e-8eba-23dc6a7b6fe7",
+      "createdAt": "2019-02-14T14:04:45.193+0000",
+      "packageType": "Whole Slide Images",
+      "submitter": {
+        "id": "5c45d31dcb5e7100489e9e2c",
+        "firstName": "Michael",
+        "lastName": "Rose",
+        "displayName": "Michael Rose",
+        "email": "rosemi@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Other",
+      "subjectId": "QA-KPMP-707",
+      "experimentDate": null,
+      "description": "QA Test Firefox",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "ec899a8a-f894-4a9a-b4c7-2b279f41664e",
+      "createdAt": "2019-03-18T17:16:08.518+0000",
+      "packageType": "Sub-segmental RNA-Seq",
+      "submitter": {
+        "id": "5c49b80acb5e71004965b0f9",
+        "firstName": "Becky",
+        "lastName": "Steck",
+        "displayName": "Becky Steck",
+        "email": "roesch@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Nuclei Isolation Example V1,RNA Extraction Example V2,RNA Isolation Example V2,Tissue Processing Example V1",
+      "subjectId": "18-312",
+      "experimentDate": null,
+      "description": "Testing IE upload",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "f0a792a3-8ced-4e9b-b3b9-6b1abeca59b6",
+      "createdAt": "2019-03-18T12:35:30.776+0000",
+      "packageType": "Whole Slide Images",
+      "submitter": {
+        "id": "5c49b80acb5e71004965b0f9",
+        "firstName": "Becky",
+        "lastName": "Steck",
+        "displayName": "Becky Steck",
+        "email": "roesch@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Near Single-cell Proteomics Example V1,Nuclei Isolation Example V1,Nuclei Isolation Example V2",
+      "subjectId": "18-342",
+      "experimentDate": null,
+      "description": "It works on my machine",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "fde8d32d-33cc-4fc8-811d-8e92d97fab4f",
+      "createdAt": "2019-02-15T15:08:14.147+0000",
+      "packageType": "My special stuff",
+      "submitter": {
+        "id": "5c66d5decb5e710048509e77",
+        "firstName": "Rebecca",
+        "lastName": "Reamy",
+        "displayName": "Rebecca Reamy",
+        "email": "rlreamy@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Protocol v1: TIS MOP v1 ",
+      "subjectId": "45644",
+      "experimentDate": null,
+      "description": "This is some awesome stuff",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "cd599d26-ec6e-4653-9bb5-147934530e5e",
+      "createdAt": "2019-03-21T18:35:14.884+0000",
+      "packageType": "Baz",
+      "submitter": {
+        "id": "5c93d9624e64f2005c5e8f1b",
+        "firstName": "Roy",
+        "lastName": "G. Biv",
+        "displayName": null,
+        "email": "roygbiv@mailinator.com"
+      },
+      "tisName": null,
+      "protocol": "Multiplexed Droplet-based Single-cell RNASeq V1",
+      "subjectId": "17-1606",
+      "experimentDate": null,
+      "description": "This is a thing",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "22df25b0-3e32-41fd-982e-0fa58612fec2",
+      "createdAt": "2019-03-25T17:47:14.124+0000",
+      "packageType": "Bulk Proteomics",
+      "submitter": {
+        "id": "5c991422d16b73005b7ab853",
+        "firstName": "Ross",
+        "lastName": "Smith",
+        "displayName": null,
+        "email": "rossmith@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Multiplexed Droplet-based Single-cell RNASeq V2",
+      "subjectId": "17-1606",
+      "experimentDate": null,
+      "description": "sadfasdf",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "5771e8cb-d67a-4b07-aee1-0572ed92fcf5",
+      "createdAt": "2019-03-25T18:32:07.389+0000",
+      "packageType": "TEST",
+      "submitter": {
+        "id": "5c991422d16b73005b7ab853",
+        "firstName": "Ross",
+        "lastName": "Smith",
+        "displayName": null,
+        "email": "rossmith@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "Multiplexed Droplet-based Single-cell RNASeq V1",
+      "subjectId": "17-1606",
+      "experimentDate": null,
+      "description": "asdfasdf",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "3b0b7706-41a4-419f-893d-7f83829caf01",
+      "createdAt": "2019-04-01T20:42:40.955+0000",
+      "packageType": "Bulk Proteomics",
+      "submitter": {
+        "id": "5c991422d16b73005b7ab853",
+        "firstName": "Ross",
+        "lastName": "Smith",
+        "displayName": null,
+        "email": "rossmith@umich.edu"
+      },
+      "tisName": null,
+      "protocol": "RNA Extraction Example V2",
+      "subjectId": "17-1606",
+      "experimentDate": null,
+      "description": "adsfasdf",
+      "regenerateZip": true
+    },
+    {
+      "packageId": "04bdc706-fd2b-4489-9eba-e1db5842c492",
+      "createdAt": "2019-04-24T20:47:38.160+0000",
+      "packageType": "3-D Tissue Imaging",
+      "submitter": {
+        "id": "5cc0cb6a5471f4005ccf0d54",
+        "firstName": "Ross",
+        "lastName": "Smith",
+        "displayName": null,
+        "email": "sdlkfjdsf@sdflks.com"
+      },
+      "tisName": "Michigan/Broad/Princeton",
+      "protocol": "Multiplexed Droplet-based Single-cell RNASeq V2",
+      "subjectId": "18-139",
+      "experimentDate": null,
+      "description": "asdfasdf",
+      "regenerateZip": false
+    },
+    {
+      "packageId": "3ee9509e-4e47-44f8-95ef-09f0ac5aee9d",
+      "createdAt": "2019-04-26T16:08:25.839+0000",
+      "packageType": "3-D Tissue Imaging",
+      "submitter": {
+        "id": "5c991422d16b73005b7ab853",
+        "firstName": "Ross",
+        "lastName": "Smith",
+        "displayName": null,
+        "email": "rossmith@umich.edu"
+      },
+      "tisName": "Michigan/Broad/Princeton",
+      "protocol": "RNA Isolation Example V1",
+      "subjectId": "17-1606",
+      "experimentDate": null,
+      "description": "asdfasdf",
+      "regenerateZip": false
+    },
+    {
+      "packageId": "41cc6c36-9a71-403c-b824-f8b6b97d4d4b",
+      "createdAt": "2019-05-20T19:26:54.684+0000",
+      "packageType": "DNA Methylation",
+      "submitter": {
+        "id": "5c991422d16b73005b7ab853",
+        "firstName": "Ross",
+        "lastName": "Smith",
+        "displayName": null,
+        "email": "rossmith@umich.edu"
+      },
+      "tisName": "Michigan/Broad/Princeton",
+      "protocol": "RNA Extraction Example V2",
+      "subjectId": "18-312",
+      "experimentDate": null,
+      "description": "asdfasdf",
+      "regenerateZip": false
+    },
+    {
+      "packageId": "3a437a0c-9793-4723-9f8f-ef63c58e59c7",
+      "createdAt": "2019-05-20T19:31:36.113+0000",
+      "packageType": "DNA Methylation",
+      "submitter": {
+        "id": "5ce3009878166e62e90130b7",
+        "firstName": "asdfsdf",
+        "lastName": "asdfasdf",
+        "displayName": null,
+        "email": "asdfa@kdsfas.com"
+      },
+      "tisName": "UTHSA/EMBL/PNNL/UCSD",
+      "protocol": "RNA Extraction Example V2",
+      "subjectId": "18-342",
+      "experimentDate": null,
+      "description": "sadfasdf",
+      "regenerateZip": false
+    },
+    {
+      "packageId": "6769e492-a1f3-4bdb-aecd-97804acddc36",
+      "createdAt": "2019-05-20T19:36:48.552+0000",
+      "packageType": "Multiplex ISH",
+      "submitter": {
+        "id": "5ce301d078166e63f81ad9b0",
+        "firstName": "asdfa",
+        "lastName": "asdfasdf",
+        "displayName": null,
+        "email": "sdfj@gasdfk.com"
+      },
+      "tisName": "UCSF/Stanford",
+      "protocol": "RNA Extraction Example V1",
+      "subjectId": "18-162",
+      "experimentDate": null,
+      "description": "adsfasdfasdf",
+      "regenerateZip": false
+    }
+  ]
 }
