@@ -91,7 +91,7 @@ class PackageTable extends Component {
     }
 
     defaultFilterMethod(filter, row, column) {
-        return row[filter.id] && row[filter.id].indexOf(filter.value) > -1;
+        return row[filter.id] && row[filter.id].toUpperCase().indexOf(filter.value.toUpperCase()) > -1;
     }
 
     resetFilterAndSort() {
