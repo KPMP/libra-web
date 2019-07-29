@@ -23,8 +23,7 @@ export default class Api {
     }
 
     post() {
-        return this.axios.post.apply(this.axios, arguments);
-        //return this.axios.post.apply(this.axios, this.fixArguments(arguments));
+        return this.axios.post.apply(this.axios, this.fixArguments(arguments));
     }
 
     fixArguments(args) {
