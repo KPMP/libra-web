@@ -3,6 +3,11 @@ import { Container, Row, Col } from 'reactstrap';
 import PackageTable from './PackageTable';
 
 class PackageDashboardPage extends Component {
+
+    componentDidMount() {
+        this.props.getPackages();
+    }
+
     render() {
         return <Container id="package-dashboard-page">
             <Row>
