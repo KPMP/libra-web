@@ -3,7 +3,7 @@ import NavBar from './components/Nav/NavBar';
 import NavFooter from './components/Nav/NavFooter';
 import loadedState from './initialState';
 import { createStore, applyMiddleware } from 'redux';
-import appReducer from './reducers';
+import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import ReactGA from 'react-ga';
@@ -16,7 +16,7 @@ import PackageDashboardPageContainer from './components/PackageDashboard/Package
 const cacheStore = window.sessionStorage.getItem('redux-store');
 const initialState = cacheStore ? JSON.parse(cacheStore) : loadedState;
 const store = applyMiddleware(thunk)(createStore)(
-  appReducer,
+  rootReducer,
   initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
