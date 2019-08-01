@@ -12,6 +12,8 @@ const DATE_SUBMITTED_LABEL = "Date Submitted";
 
 const PACKAGE_ID = "packageId";
 const SUBMITTER_ID = "displayName";
+const SUBMITTER_FIRST_NAME = "firstName";
+const SUBMITTER_LAST_NAME = "lastName";
 const PACKAGE_TYPE_ID = "packageType";
 const TIS_NAME_ID = "tisName";
 const DATE_SUBMITTED_ID = "createdAt";
@@ -52,7 +54,7 @@ class PackageTable extends Component {
             {
                 Header: SUBMITTER_LABEL,
                 id: SUBMITTER_ID,
-                accessor: (row) => row.submitter[SUBMITTER_ID]
+                accessor: (row) => row.submitter && row.submitter[SUBMITTER_ID] ? row.submitter[SUBMITTER_ID] : row.submitter[SUBMITTER_FIRST_NAME] + " " + row.submitter[SUBMITTER_LAST_NAME]
             },
             {
                 Header: TIS_NAME_LABEL,
@@ -63,8 +65,6 @@ class PackageTable extends Component {
                 Header: DATE_SUBMITTED_LABEL,
                 id: DATE_SUBMITTED_ID,
                 accessor: (row) => {
-
-                    console.log(row[DATE_SUBMITTED_ID]);
 
                     return new Moment(row[DATE_SUBMITTED_ID])
                         .local()
