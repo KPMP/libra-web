@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React, { Component } from 'react';
 import NavBar from './components/Nav/NavBar';
 import NavFooter from './components/Nav/NavFooter';
