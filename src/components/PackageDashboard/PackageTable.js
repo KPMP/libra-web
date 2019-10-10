@@ -81,8 +81,8 @@ class PackageTable extends Component {
                 accessor: (row) => {
                     if (row.state && row.state[PACKAGE_STATE_ID]) {
                         return stateMap.has(row.state[PACKAGE_STATE_ID]) ? stateMap.get(row.state[PACKAGE_STATE_ID]) : row.state[PACKAGE_STATE_ID];
-                    } else
-                        return ""
+                    }
+                    return ""
                 }
             }
         ];
