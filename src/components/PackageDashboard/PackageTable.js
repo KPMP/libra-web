@@ -78,7 +78,12 @@ class PackageTable extends Component {
             {
                 Header: PACKAGE_STATE_LABEL,
                 id: PACKAGE_STATE_ID,
-                accessor: (row) => row.state && row.state[PACKAGE_STATE_ID] ? stateMap.get(row.state[PACKAGE_STATE_ID]) : ""
+                accessor: (row) => {
+                    if (row.state && row.state[PACKAGE_STATE_ID]) {
+                        return stateMap.has(row.state[PACKAGE_STATE_ID]) ? stateMap.get(row.state[PACKAGE_STATE_ID]) : row.state[PACKAGE_STATE_ID];
+                    } else
+                        return ""
+                }
             }
         ];
     }
