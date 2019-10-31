@@ -3,3 +3,7 @@
 
 # libra-web
 The web-layer of the KPMP curation tools. 
+
+## Hosted at:
+dev-datamanager.kpmp.org
+datamanager.kpmp.org
