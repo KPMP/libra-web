@@ -13,6 +13,8 @@ import { Route, Switch, Router } from 'react-router-dom';
 import ErrorBoundaryContainer from './components/Error/ErrorBoundaryContainer';
 import Oops from './components/Error/Oops';
 import PackageDashboardPageContainer from './components/PackageDashboard/PackageDashboardPageContainer';
+import PermissionDenied from './components/Error/PermissionDenied';
+import NotRegistered from './components/Error/NotRegistered';
 
 const cacheStore = window.sessionStorage.getItem('redux-store');
 const initialState = cacheStore ? JSON.parse(cacheStore) : loadedState;
@@ -28,7 +30,6 @@ const saveState = () => {
   );
 };
 
-// *** Get a new tracking Id and add it here *** //
 const GA_TRACKING_ID = 'UA-124331187-8';
 
 if(process.env.NODE_ENV === 'production') {
@@ -62,8 +63,10 @@ class App extends Component {
           <ErrorBoundaryContainer>
             <NavBar />
             <Switch>
-              <Route exact path="/" component={PackageDashboardPageContainer} store={store} />
-              <Route exact path="/oops" component={Oops} />
+            	<Route exact path="/" component={PackageDashboardPageContainer} store={store} />
+            	<Route exact path="/oops" component={Oops} />
+            	<Route exact path="/permissionDenied" component={PermissionDenied} />
+            	<Route exact path="/notRegistered" component={NotRegistered} />
             </Switch>
             <NavFooter />
           </ErrorBoundaryContainer>
