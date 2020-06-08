@@ -11,6 +11,7 @@ const SUBMITTER_LABEL = "Submitter";
 const TIS_NAME_LABEL = "TIS Name";
 const DATE_SUBMITTED_LABEL = "Date Submitted";
 const PACKAGE_STATE_LABEL = "Package State";
+const SUBJECT_ID_LABEL = "Subject Id";
 
 const PACKAGE_ID = "_id";
 const SUBMITTER_ID = "displayName";
@@ -22,6 +23,7 @@ const DATE_SUBMITTED_ID = "createdAt";
 const DATE_FORMAT = "YYYY-MM-DD, h:mm a z";
 const PACKAGE_INFO_PROPERTY = "packageInfo";
 const PACKAGE_STATE_ID = "state";
+const SUBJECT_ID = "subjectId";
 
 // package id, submitter, package type, tis name, date submitted
 class PackageTable extends Component {
@@ -49,6 +51,11 @@ class PackageTable extends Component {
                 Header: PACKAGE_ID_LABEL,
                 id: PACKAGE_ID,
                 accessor: (row) => row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]
+            },
+            {
+            	Header: SUBJECT_ID_LABEL,
+            	id: SUBJECT_ID,
+            	accessor: (row) => row[PACKAGE_INFO_PROPERTY][SUBJECT_ID]
             },
             {
                 Header: PACKAGE_TYPE_LABEL,
@@ -85,6 +92,7 @@ class PackageTable extends Component {
                     return ""
                 }
             }
+            
         ];
     }
 
