@@ -60,7 +60,7 @@ class PackageTable extends Component {
                 			<a target='_blank' rel='noopener noreferrer' href={row.state[GLOBUS_LINK]}>{row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]}</a>
                 		);
                 	} else {
-                		return packageId;
+                		return row[PACKAGE_INFO_PROPERTY][PACKAGE_ID];
                 	}
                 }
             },
