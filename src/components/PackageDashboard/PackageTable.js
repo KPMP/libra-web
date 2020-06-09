@@ -5,25 +5,27 @@ import PropTypes from 'prop-types';
 import Moment from 'moment';
 import stateMap from './stateMap';
 
-const PACKAGE_ID_LABEL = "Package ID";
-const PACKAGE_TYPE_LABEL = "Package Type";
-const SUBMITTER_LABEL = "Submitter";
-const TIS_NAME_LABEL = "TIS Name";
-const DATE_SUBMITTED_LABEL = "Date Submitted";
-const PACKAGE_STATE_LABEL = "Package State";
-const SUBJECT_ID_LABEL = "Subject Id";
+const PACKAGE_ID_LABEL = 'Package ID';
+const PACKAGE_TYPE_LABEL = 'Package Type';
+const SUBMITTER_LABEL = 'Submitter';
+const TIS_NAME_LABEL = 'TIS Name';
+const DATE_SUBMITTED_LABEL = 'Date Submitted';
+const PACKAGE_STATE_LABEL = 'Package State';
+const SUBJECT_ID_LABEL = 'Subject Id';
 
-const PACKAGE_ID = "_id";
-const SUBMITTER_ID = "displayName";
-const SUBMITTER_FIRST_NAME = "firstName";
-const SUBMITTER_LAST_NAME = "lastName";
-const PACKAGE_TYPE_ID = "packageType";
-const TIS_NAME_ID = "tisName";
-const DATE_SUBMITTED_ID = "createdAt";
-const DATE_FORMAT = "YYYY-MM-DD, h:mm a z";
-const PACKAGE_INFO_PROPERTY = "packageInfo";
-const PACKAGE_STATE_ID = "state";
-const SUBJECT_ID = "subjectId";
+const PACKAGE_ID = '_id';
+const SUBMITTER_ID = 'displayName';
+const SUBMITTER_FIRST_NAME = 'firstName';
+const SUBMITTER_LAST_NAME = 'lastName';
+const PACKAGE_TYPE_ID = 'packageType';
+const TIS_NAME_ID = 'tisName';
+const DATE_SUBMITTED_ID = 'createdAt';
+const DATE_FORMAT = 'YYYY-MM-DD, h:mm a z';
+const PACKAGE_INFO_PROPERTY = 'packageInfo';
+const PACKAGE_STATE_ID = 'state';
+const SUBJECT_ID = 'subjectId';
+const GLOBUS_LINK = 'codicil';
+const LARGE_FILE_UPLOAD = 'largeFilesChecked';
 
 // package id, submitter, package type, tis name, date submitted
 class PackageTable extends Component {
@@ -50,7 +52,20 @@ class PackageTable extends Component {
             {
                 Header: PACKAGE_ID_LABEL,
                 id: PACKAGE_ID,
-                accessor: (row) => row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]
+                accessor: 'link',
+                Cell: (info) => {
+                	let row = info.original;
+                	let packageId = row[PACKAGE_INFO_PROPERTY][PACKAGE_ID];
+                	let globusDir = row.state[GLOBUS_LINK];
+                	let isLargeFileUpload = row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD];
+                    if(isLargeFileUpload && globusDir !== '') {
+                    	return (
+                    		<a target='_blank' href={globusDir}>{packageId}</a>
+                    	);
+                    } else {
+                    	return packageId;
+                    }
+                }
             },
             {
             	Header: SUBJECT_ID_LABEL,
@@ -65,7 +80,7 @@ class PackageTable extends Component {
             {
                 Header: SUBMITTER_LABEL,
                 id: SUBMITTER_ID,
-                accessor: (row) => row[PACKAGE_INFO_PROPERTY].submitter && row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] ? row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] : row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_FIRST_NAME] + " " + row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_LAST_NAME]
+                accessor: (row) => row[PACKAGE_INFO_PROPERTY].submitter && row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] ? row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] : row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_FIRST_NAME] + ' ' + row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_LAST_NAME]
             },
             {
                 Header: TIS_NAME_LABEL,
@@ -89,7 +104,7 @@ class PackageTable extends Component {
                     if (row.state && row.state[PACKAGE_STATE_ID]) {
                         return stateMap.has(row.state[PACKAGE_STATE_ID]) ? stateMap.get(row.state[PACKAGE_STATE_ID]) : row.state[PACKAGE_STATE_ID];
                     }
-                    return ""
+                    return ''
                 }
             }
             
@@ -139,9 +154,9 @@ class PackageTable extends Component {
             defaultPageSize={12}
             defaultFilterMethod={this.defaultFilterMethod}
             filterable
-            className="-striped -highlight"
+            className='-striped -highlight'
             showPageSizeOptions={false}
-            noDataText={"No packages found"}
+            noDataText={'No packages found'}
         />;
     }
 }
