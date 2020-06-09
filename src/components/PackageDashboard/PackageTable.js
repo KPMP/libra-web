@@ -55,16 +55,13 @@ class PackageTable extends Component {
                 accessor: 'link',
                 Cell: (info) => {
                 	let row = info.original;
-                	let packageId = row[PACKAGE_INFO_PROPERTY][PACKAGE_ID];
-                	let globusDir = row.state[GLOBUS_LINK];
-                	let isLargeFileUpload = row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD];
-                    if(isLargeFileUpload && globusDir !== '') {
-                    	return (
-                    		<a target='_blank' href={globusDir}>{packageId}</a>
-                    	);
-                    } else {
-                    	return packageId;
-                    }
+                	if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD] && row.state[GLOBUS_LINK] !== '') {
+                		return (
+                			<a target='_blank' rel='noopener noreferrer' href={row.state[GLOBUS_LINK]}>{row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]}</a>
+                		);
+                	} else {
+                		return packageId;
+                	}
                 }
             },
             {
