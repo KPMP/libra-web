@@ -56,8 +56,10 @@ class PackageTable extends Component {
 					let row = info.original;
 					// eslint-disable-next-line
 					let href = 'https://app.globus.org/file-manager?origin_id=936381c8-1653-11ea-b94a-0e16720bb42f&origin_path=/PROD_INBOX/' + row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]; 
+					// eslint-disable-next-line
 					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD]) {
 						return (
+							// eslint-disable-next-line
 							<a target='_blank' rel='noopener noreferrer' href={href}>{row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]}</a>
 						);
 					} else {
@@ -78,6 +80,7 @@ class PackageTable extends Component {
 			{
 				Header: SUBMITTER_LABEL,
 				id: SUBMITTER_ID,
+				// eslint-disable-next-line
 				accessor: (row) => row[PACKAGE_INFO_PROPERTY].submitter && row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] ? row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] : row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_FIRST_NAME] + ' ' + row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_LAST_NAME]
 			},
 			{
