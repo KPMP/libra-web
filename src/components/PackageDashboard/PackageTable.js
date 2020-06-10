@@ -24,7 +24,6 @@ const DATE_FORMAT = 'YYYY-MM-DD, h:mm a z';
 const PACKAGE_INFO_PROPERTY = 'packageInfo';
 const PACKAGE_STATE_ID = 'state';
 const SUBJECT_ID = 'subjectId';
-const GLOBUS_LINK = 'codicil';
 const LARGE_FILE_UPLOAD = 'largeFilesChecked';
 
 // package id, submitter, package type, tis name, date submitted
@@ -56,7 +55,7 @@ class PackageTable extends Component {
 				Cell: (info) => {
 					let row = info.original;
 					// eslint-disable-next-line
-					let href = 'https://app.globus.org/file-manager?origin_id=936381c8-1653-11ea-b94a-0e16720bb42f&origin_path=/' + row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]; 
+					let href = 'https://app.globus.org/file-manager?origin_id=936381c8-1653-11ea-b94a-0e16720bb42f&origin_path=/PROD_INBOX/' + row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]; 
 					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD]) {
 						return (
 							<a target='_blank' rel='noopener noreferrer' href={href}>{row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]}</a>
