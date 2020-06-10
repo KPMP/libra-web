@@ -30,136 +30,137 @@ const LARGE_FILE_UPLOAD = 'largeFilesChecked';
 // package id, submitter, package type, tis name, date submitted
 class PackageTable extends Component {
 
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.getColumns = this.getColumns.bind(this);
-        this.onSortedChange = this.onSortedChange.bind(this);
-        this.onFilteredChange = this.onFilteredChange.bind(this);
-        this.resetFilterAndSort = this.resetFilterAndSort.bind(this);
-        this.defaultFilterMethod = this.defaultFilterMethod.bind(this);
-        this.reactTable = React.createRef();
+		this.getColumns = this.getColumns.bind(this);
+		this.onSortedChange = this.onSortedChange.bind(this);
+		this.onFilteredChange = this.onFilteredChange.bind(this);
+		this.resetFilterAndSort = this.resetFilterAndSort.bind(this);
+		this.defaultFilterMethod = this.defaultFilterMethod.bind(this);
+		this.reactTable = React.createRef();
 
-        this.state = {
-            sorted: [],
-            filtered: [],
-            columns: this.getColumns()
-        };
-    };
+		this.state = {
+			sorted: [],
+			filtered: [],
+			columns: this.getColumns()
+		};
+	};
 
-    getColumns() {
-        return [
-            {
-                Header: PACKAGE_ID_LABEL,
-                id: PACKAGE_ID,
-                accessor: 'link',
-                Cell: (info) => {
-                	let row = info.original;
-                	if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD] && row.state[GLOBUS_LINK] !== '') {
-                		return (
-                			<a target='_blank' rel='noopener noreferrer' href={row.state[GLOBUS_LINK]}>{row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]}</a>
-                		);
-                	} else {
-                		return row[PACKAGE_INFO_PROPERTY][PACKAGE_ID];
-                	}
-                }
-            },
-            {
-            	Header: SUBJECT_ID_LABEL,
-            	id: SUBJECT_ID,
-            	accessor: (row) => row[PACKAGE_INFO_PROPERTY][SUBJECT_ID]
-            },
-            {
-                Header: PACKAGE_TYPE_LABEL,
-                id: PACKAGE_TYPE_ID,
-                accessor: (row) => row[PACKAGE_INFO_PROPERTY][PACKAGE_TYPE_ID]
-            },
-            {
-                Header: SUBMITTER_LABEL,
-                id: SUBMITTER_ID,
-                accessor: (row) => row[PACKAGE_INFO_PROPERTY].submitter && row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] ? row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] : row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_FIRST_NAME] + ' ' + row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_LAST_NAME]
-            },
-            {
-                Header: TIS_NAME_LABEL,
-                id: TIS_NAME_ID,
-                accessor: (row) => row[PACKAGE_INFO_PROPERTY][TIS_NAME_ID]
-            },
-            {
-                Header: DATE_SUBMITTED_LABEL,
-                id: DATE_SUBMITTED_ID,
-                accessor: (row) => {
-
-                    return new Moment(row[PACKAGE_INFO_PROPERTY][DATE_SUBMITTED_ID])
-                        .local()
-                        .format(DATE_FORMAT)
-                }
-            },
-            {
-                Header: PACKAGE_STATE_LABEL,
-                id: PACKAGE_STATE_ID,
-                accessor: (row) => {
-                    if (row.state && row.state[PACKAGE_STATE_ID]) {
-                        return stateMap.has(row.state[PACKAGE_STATE_ID]) ? stateMap.get(row.state[PACKAGE_STATE_ID]) : row.state[PACKAGE_STATE_ID];
-                    }
-                    return ''
-                }
-            }
+	getColumns() {
+		return [
+			{
+				Header: PACKAGE_ID_LABEL,
+				id: PACKAGE_ID,
+				accessor: 'link', 
+				Cell: (info) => {
+					let row = info.original;
+					// eslint-disable-next-line
+					let href = 'https://app.globus.org/file-manager?origin_id=936381c8-1653-11ea-b94a-0e16720bb42f&origin_path=/' + row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]; 
+					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD]) {
+						return (
+							<a target='_blank' rel='noopener noreferrer' href={href}>{row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]}</a>
+						);
+					} else {
+						return row[PACKAGE_INFO_PROPERTY][PACKAGE_ID];
+					}
+				}
+			},
+			{
+				Header: SUBJECT_ID_LABEL,
+				id: SUBJECT_ID,
+				accessor: (row) => row[PACKAGE_INFO_PROPERTY][SUBJECT_ID]
+			},
+			{
+				Header: PACKAGE_TYPE_LABEL,
+				id: PACKAGE_TYPE_ID,
+				accessor: (row) => row[PACKAGE_INFO_PROPERTY][PACKAGE_TYPE_ID]
+			},
+			{
+				Header: SUBMITTER_LABEL,
+				id: SUBMITTER_ID,
+				accessor: (row) => row[PACKAGE_INFO_PROPERTY].submitter && row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] ? row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] : row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_FIRST_NAME] + ' ' + row[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_LAST_NAME]
+			},
+			{
+				Header: TIS_NAME_LABEL,
+				id: TIS_NAME_ID,
+				accessor: (row) => row[PACKAGE_INFO_PROPERTY][TIS_NAME_ID]
+			},
+			{
+				Header: DATE_SUBMITTED_LABEL,
+				id: DATE_SUBMITTED_ID,
+				accessor: (row) => {
+					return new Moment(row[PACKAGE_INFO_PROPERTY][DATE_SUBMITTED_ID])
+						.local()
+						.format(DATE_FORMAT)
+				}
+			},
+			{
+				Header: PACKAGE_STATE_LABEL,
+				id: PACKAGE_STATE_ID,
+				accessor: (row) => {
+					if (row.state && row.state[PACKAGE_STATE_ID]) {
+						return stateMap.has(row.state[PACKAGE_STATE_ID]) ? stateMap.get(row.state[PACKAGE_STATE_ID]) : row.state[PACKAGE_STATE_ID];
+					}
+					return '';
+				}
+			}
             
-        ];
-    }
+		];
+	}
 
-    onSortedChange(sorted) {
-        ReactGA.event({
-            category: 'Data Table',
-            action: 'Sort Data'
-        });
-        this.setState({
-            sorted: sorted
-        });
-    }
+	onSortedChange(sorted) {
+		ReactGA.event({
+			category: 'Data Table',
+			action: 'Sort Data'
+		});
+		this.setState({
+			sorted: sorted
+		});
+	}
 
-    onFilteredChange(filtered) {
-        ReactGA.event({
-            category: 'Data Table',
-            action: 'Filter Data'
-        });
-        this.setState({
-            filtered: filtered
-        });
-    }
+	onFilteredChange(filtered) {
+		ReactGA.event({
+			category: 'Data Table',
+			action: 'Filter Data'
+		});
+		this.setState({
+			filtered: filtered
+		});
+	}
 
-    defaultFilterMethod(filter, row, column) {
-        return row[filter.id] && row[filter.id].toUpperCase().indexOf(filter.value.toUpperCase()) > -1;
-    }
+	defaultFilterMethod(filter, row, column) {
+		return row[filter.id] && row[filter.id].toUpperCase().indexOf(filter.value.toUpperCase()) > -1;
+	}
 
-    resetFilterAndSort() {
-        this.setState({
-            sorted: [],
-            filtered: []
-        });
-    }
+	resetFilterAndSort() {
+		this.setState({
+			sorted: [],
+			filtered: []
+		});
+	}
 
-    render() {
-        return <ReactTable
-            data={this.props.packages}
-            ref={this.reactTable}
-            sorted={this.state.sorted}
-            filtered={this.state.filtered}
-            onSortedChange={this.onSortedChange}
-            onFilteredChange={this.onFilteredChange}
-            columns={this.state.columns}
-            defaultPageSize={12}
-            defaultFilterMethod={this.defaultFilterMethod}
-            filterable
-            className='-striped -highlight'
-            showPageSizeOptions={false}
-            noDataText={'No packages found'}
-        />;
-    }
+	render() {
+		return <ReactTable
+			data={this.props.packages}
+			ref={this.reactTable}
+			sorted={this.state.sorted}
+			filtered={this.state.filtered}
+			onSortedChange={this.onSortedChange}
+			onFilteredChange={this.onFilteredChange}
+			columns={this.state.columns}
+			defaultPageSize={12}
+			defaultFilterMethod={this.defaultFilterMethod}
+			filterable
+			className='-striped -highlight'
+			showPageSizeOptions={false}
+			noDataText={'No packages found'}
+		/>;
+	}
 }
 
 PackageTable.propTypes = {
-    packages: PropTypes.arrayOf(PropTypes.object)
+		packages: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default PackageTable;
