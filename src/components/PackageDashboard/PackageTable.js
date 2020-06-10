@@ -63,6 +63,7 @@ class PackageTable extends Component {
 							<a target='_blank' rel='noopener noreferrer' href={href}>{row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]}</a>
 						);
 					} else {
+						// eslint-disable-next-line
 						return row[PACKAGE_INFO_PROPERTY][PACKAGE_ID];
 					}
 				}

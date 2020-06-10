@@ -14,7 +14,7 @@ describe('packages', () => {
 		let action = {
 				type: actionNames.SET_PACKAGES,
 				payload: 'new stuff'
-		}
+		};
 		expect(packages([], action)).toEqual('new stuff');
 	});
 });
