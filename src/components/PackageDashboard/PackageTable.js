@@ -12,6 +12,7 @@ const TIS_NAME_LABEL = 'TIS Name';
 const DATE_SUBMITTED_LABEL = 'Date Submitted';
 const PACKAGE_STATE_LABEL = 'Package State';
 const SUBJECT_ID_LABEL = 'Subject Id';
+const GLOBUS_LINK_LABEL = 'Globus Link';
 
 const PACKAGE_ID = '_id';
 const SUBMITTER_ID = 'displayName';
@@ -51,22 +52,7 @@ class PackageTable extends Component {
 			{
 				Header: PACKAGE_ID_LABEL,
 				id: PACKAGE_ID,
-				accessor: 'link', 
-				Cell: (info) => {
-					let row = info.original;
-					// eslint-disable-next-line
-					let href = 'https://app.globus.org/file-manager?origin_id=936381c8-1653-11ea-b94a-0e16720bb42f&origin_path=/PROD_INBOX/' + row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]; 
-					// eslint-disable-next-line
-					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD]) {
-						return (
-							// eslint-disable-next-line
-							<a target='_blank' rel='noopener noreferrer' href={href}>{row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]}</a>
-						);
-					} else {
-						// eslint-disable-next-line
-						return row[PACKAGE_INFO_PROPERTY][PACKAGE_ID];
-					}
-				}
+				accessor: (row) => row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]
 			},
 			{
 				Header: SUBJECT_ID_LABEL,
@@ -106,6 +92,25 @@ class PackageTable extends Component {
 						return stateMap.has(row.state[PACKAGE_STATE_ID]) ? stateMap.get(row.state[PACKAGE_STATE_ID]) : row.state[PACKAGE_STATE_ID];
 					}
 					return '';
+				}
+			}, {
+				Header: GLOBUS_LINK_LABEL,
+				accessor: 'link',
+				filterable: false,
+				Cell: (info) => {
+					let row = info.original;
+					// eslint-disable-next-line
+					let href = 'https://app.globus.org/file-manager?origin_id=936381c8-1653-11ea-b94a-0e16720bb42f&origin_path=/PROD_INBOX/' + row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]; 
+					// eslint-disable-next-line
+					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD]) {
+						return (
+							// eslint-disable-next-line
+							<a target='_blank' rel='noopener noreferrer' href={href}>{row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]}</a>
+						);
+					} else {
+						// eslint-disable-next-line
+						return '';
+					}
 				}
 			}
             
