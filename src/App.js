@@ -13,6 +13,7 @@ import { Route, Switch, Router } from 'react-router-dom';
 import ErrorBoundaryContainer from './components/Error/ErrorBoundaryContainer';
 import Oops from './components/Error/Oops';
 import PackageDashboardPageContainer from './components/PackageDashboard/PackageDashboardPageContainer';
+import FilenameValidationPageContainer from './components/Validation/FilenameValidationPageContainer';
 import PermissionDenied from './components/Error/PermissionDenied';
 import NotRegistered from './components/Error/NotRegistered';
 
@@ -63,10 +64,11 @@ class App extends Component {
           <ErrorBoundaryContainer>
             <NavBar />
             <Switch>
-            	<Route exact path="/" component={PackageDashboardPageContainer} store={store} />
-            	<Route exact path="/oops" component={Oops} />
-            	<Route exact path="/permissionDenied" component={PermissionDenied} />
-            	<Route exact path="/notRegistered" component={NotRegistered} />
+            	<Route exact path='/' component={PackageDashboardPageContainer} store={store} />
+            	<Route exact path='/filenameValidation' component={FilenameValidationPageContainer} store={store}/>
+            	<Route exact path='/oops' component={Oops} />
+            	<Route exact path='/permissionDenied' component={PermissionDenied} />
+            	<Route exact path='/notRegistered' component={NotRegistered} />
             </Switch>
             <NavFooter />
           </ErrorBoundaryContainer>
