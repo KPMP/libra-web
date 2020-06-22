@@ -26,7 +26,7 @@ class PackageDashboardPage extends Component {
 					/>
 					</Col>
 				</Row>
-			</Container>;
+			</Container>
 		);
 	}
 }
