@@ -8,7 +8,7 @@ class FilenameValidationPage extends Component {
 		this.state = {
 			packageId: '',
 			filenames: ''
-		}
+		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 	
