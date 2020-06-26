@@ -16,6 +16,18 @@ export const getPackages = () => {
     };
 }
 
+export const movePackageFiles = (packageId) => {
+    return (dispatch) => {
+        api.post('/api/v1/packages/' + packageId + '/files/move')
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+}
+
 export const setPackages = (packages) => {
     return {
         type: actionNames.SET_PACKAGES,
