@@ -8,17 +8,16 @@ export const setValidationResult = (result) => {
 	return {
 		type: actionNames.SET_VALIDATION_RESULT,
 		payload: result
-	}
+	};
 }
 
 export const validateFilenames = (formData) => {
 	return (dispatch) => {
 		api.post('/api//v1/package/files/validation', formData)
-			.then(res => {
+			.then((res) => {
 				dispatch(setValidationResult(res.data));
 			})
-			.catch(error => {
-				console.log(error);
+			.catch((error) => {
 				dispatch(sendMessageToBackend(error));
 			});
 	}
@@ -27,5 +26,5 @@ export const validateFilenames = (formData) => {
 export const clearValidationResult = () => {
 	return {
 		type: actionNames.CLEAR_VALIDATION_RESULT
-	}
+	};
 }
