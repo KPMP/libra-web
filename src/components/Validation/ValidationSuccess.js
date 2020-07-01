@@ -75,10 +75,10 @@ class ValidationSuccess extends Component {
 					</Row>
 					
 				}
-				<Row className='mt-6'>
+				<Row className='mt-4'>
 					<Col sm={6}>
 						<Link to='/filenameValidation'>
-							<Button color="primary">Let's do it again!</Button>
+							<Button color="primary" onClick={this.props.clearValidationResult}>Let's do it again!</Button>
 						</Link>
 					</Col>
 					<Col sm={6}>

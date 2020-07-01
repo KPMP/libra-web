@@ -37,11 +37,17 @@ class FilenameValidationPage extends Component {
 			let filesNotInMetadata = this.props.validationResult.globusFilesNotFoundInMetadata;
 			if (!filesNotInGlobus && !filesNotInMetadata) {
 				return (
-					<ValidationSuccess result={this.props.validationResult}/>
+					<ValidationSuccess 
+						result={this.props.validationResult}
+						clearValidationResult={this.props.clearValidationResult}
+					/>
 				);
 			} else {
 				return (
-					<ValidationFailure result={this.props.validationResult}/>
+					<ValidationFailure 
+						result={this.props.validationResult}
+						clearValidationResult={this.props.clearValidationResult}
+					/>
 				);
 			}
 		} else {
