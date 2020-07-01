@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import { resetStateReducer } from './resetStateReducer';
 import { packages } from './components/PackageDashboard/packageReducer';
+import { filenameValidation } from './components/Validation/filenameValidationReducer';
 import actionNames from './actions/actionNames';
 import loadedState from './initialState';
 
 const appReducer = combineReducers({
-  resetStateReducer,
-  packages
+	filenameValidation,
+	resetStateReducer,
+	packages
 });
 
 const rootReducer = (state, action) => {

@@ -52,3 +52,18 @@ body {
   @media only screen and (max-width: 767px) {
     #title-text {
       display: none; } }
+
+.validationImage {
+  height: 150px; }
+
+.validationMessage {
+  vertical-align: bottom;
+  height: 150px;
+  display: table-cell; }
+
+.resultHeader {
+  background-color: lightgray;
+  font-weight: 700; }
+
+.heavierText {
+  font-weight: 700; }
