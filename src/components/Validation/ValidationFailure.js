@@ -60,7 +60,7 @@ class ValidationFailure extends Component {
 							alt="Filename mismatch"
 							id="fail-kidneys"
 							className='validationImage'
-			            />
+						/>
 					</Col>
 					<Col sm={10}>
 						<h3 className='validationMessage'>Validation Failed!</h3>

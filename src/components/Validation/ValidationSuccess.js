@@ -43,7 +43,7 @@ class ValidationSuccess extends Component {
 							alt="Filename match"
 							id="happy-kidneys"
 							className='validationImage'
-			            />
+						/>
 					</Col>
 					<Col sm={10}>
 						<h3 className='validationMessage'>Validation Success!</h3>
