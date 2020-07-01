@@ -121,11 +121,10 @@ class PackageTable extends Component {
 				Cell: (info) => {
 					let row = info.original;
 					// eslint-disable-next-line
-					// eslint-disable-next-line
 					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD] && row.state[PACKAGE_STATE_ID] === 'METADATA_RECEIVED') {
 						return (
 							// eslint-disable-next-line
-							<Button onClick={() => this.handleMoveFileClick(row[PACKAGE_INFO_PROPERTY][PACKAGE_ID])}>Move Files</Button>
+							<Button color="primary" onClick={() => this.handleMoveFileClick(row[PACKAGE_INFO_PROPERTY][PACKAGE_ID])}>Move Files</Button>
 						);
 					} else {
 						// eslint-disable-next-line
