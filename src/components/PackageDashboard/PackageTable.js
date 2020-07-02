@@ -4,6 +4,7 @@ import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
 import Moment from 'moment';
 import stateMap from './stateMap';
+import { Button } from 'reactstrap';
 
 const PACKAGE_ID_LABEL = 'Package ID';
 const PACKAGE_TYPE_LABEL = 'Package Type';
@@ -13,6 +14,7 @@ const DATE_SUBMITTED_LABEL = 'Date Submitted';
 const PACKAGE_STATE_LABEL = 'Package State';
 const SUBJECT_ID_LABEL = 'Subject Id';
 const GLOBUS_LINK_LABEL = 'Globus Link';
+const MOVE_PACKAGE_FILES_LABEL = 'Move Files to DLU';
 
 const PACKAGE_ID = '_id';
 const SUBMITTER_ID = 'displayName';
@@ -112,6 +114,23 @@ class PackageTable extends Component {
 						return '';
 					}
 				}
+			}, {
+				Header: MOVE_PACKAGE_FILES_LABEL,
+				accessor: 'button',
+				filterable: false,
+				Cell: (info) => {
+					let row = info.original;
+					// eslint-disable-next-line
+					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD] && row.state[PACKAGE_STATE_ID] === 'METADATA_RECEIVED') {
+						return (
+							// eslint-disable-next-line
+							<Button color="primary" onClick={() => this.handleMoveFileClick(row[PACKAGE_INFO_PROPERTY][PACKAGE_ID])}>Move Files</Button>
+						);
+					} else {
+						// eslint-disable-next-line
+						return '';
+					}
+				}
 			}
             
 		];
@@ -136,6 +155,10 @@ class PackageTable extends Component {
 			filtered: filtered
 		});
 	}
+
+	handleMoveFileClick = (packageId) => {
+		this.props.movePackageFiles(packageId);
+	};
 
 	defaultFilterMethod(filter, row, column) {
 		return row[filter.id] && row[filter.id].toUpperCase().indexOf(filter.value.toUpperCase()) > -1;
