@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
-import ValidationSuccess from './ValidationSuccess';
-import ValidationFailure from './ValidationFailure';
+import ValidationResult from './ValidationResult';
 
 class FilenameValidationPage extends Component {
 	
@@ -35,21 +34,16 @@ class FilenameValidationPage extends Component {
 		if (Object.keys(this.props.validationResult).length !== 0 && this.props.validationResult.constructor === Object) {
 			let filesNotInGlobus = this.props.validationResult.metadataFilesNotFoundInGlobus;
 			let filesNotInMetadata = this.props.validationResult.globusFilesNotFoundInMetadata;
-			if (!filesNotInGlobus && !filesNotInMetadata) {
-				return (
-					<ValidationSuccess 
-						result={this.props.validationResult}
-						clearValidationResult={this.props.clearValidationResult}
-					/>
-				);
-			} else {
-				return (
-					<ValidationFailure 
-						result={this.props.validationResult}
-						clearValidationResult={this.props.clearValidationResult}
-					/>
-				);
-			}
+			let isSuccess = !filesNotInGlobus && !filesNotInMetadata;
+			
+			return (
+				<ValidationResult
+					result={this.props.validationResult}
+					clearValidationResult={this.props.clearValidationResult}
+					isSuccess={isSuccess}
+				/>
+			);
+			
 		} else {
 			return (
 				<Container>
