@@ -125,6 +125,6 @@ describe('generateTableRows', () => {
 		expect(table[0]).toEqual(<Row className='mt-3' tag='div'><Col sm={6} tag='div' widths={['xs', 'sm', 'md', 'lg', 'xl']}>c</Col><Col sm={6} tag='div' widths={['xs', 'sm', 'md', 'lg', 'xl']}></Col></Row>);
 		expect(table[1]).toEqual(<Row className='mt-3' tag='div'><Col sm={6} tag='div' widths={['xs', 'sm', 'md', 'lg', 'xl']}>d</Col><Col sm={6} tag='div' widths={['xs', 'sm', 'md', 'lg', 'xl']}></Col></Row>);
 		expect(table[2]).toEqual(<Row className='mt-3' tag='div'><Col sm={6} tag='div' widths={['xs', 'sm', 'md', 'lg', 'xl']}></Col><Col sm={6} tag='div' widths={['xs', 'sm', 'md', 'lg', 'xl']}>a</Col></Row>);
-		expect(table[]).toEqual(<Row className='mt-3' tag='div'><Col sm={6} tag='div' widths={['xs', 'sm', 'md', 'lg', 'xl']}></Col><Col sm={6} tag='div' widths={['xs', 'sm', 'md', 'lg', 'xl']}>METADATA_file.xls</Col></Row>);
+		expect(table[3]).toEqual(<Row className='mt-3' tag='div'><Col sm={6} tag='div' widths={['xs', 'sm', 'md', 'lg', 'xl']}></Col><Col sm={6} tag='div' widths={['xs', 'sm', 'md', 'lg', 'xl']}>METADATA_file.xls</Col></Row>);
 	});
 });
