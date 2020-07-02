@@ -20,10 +20,10 @@ export const movePackageFiles = (packageId) => {
     return (dispatch) => {
         api.post('/api/v1/packages/' + packageId + '/files/move')
             .then(res => {
-                console.log(res)
+                alert(res.data);
             })
             .catch(err => {
-                console.log(err);
+                alert(err);
             });
     }
 }
