@@ -23,7 +23,7 @@ export const movePackageFiles = (packageId) => {
                 alert(res.data);
             })
             .catch(err => {
-                alert(err);
+                alert("There was a problem moving the files.");
             });
     }
 }
