@@ -3,7 +3,8 @@ import { getPackages, movePackageFiles, getStateDisplayMap } from "../../actions
 import PackageDashboardPage from './PackageDashboardPage';
 
 const mapStateToProps = (state, props) => ({
-    packages: state.packages
+    packages: state.packages,
+    stateDisplayMap: state.stateDisplayMap
 });
 
 const mapDispatchToProps = (dispatch, props) => ({

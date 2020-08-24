@@ -4,6 +4,7 @@ import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
 import Moment from 'moment';
 import { Button } from 'reactstrap';
+import { getStateDisplayText } from './stateDisplayHelper';
 
 const PACKAGE_ID_LABEL = 'Package ID';
 const PACKAGE_TYPE_LABEL = 'Package Type';
@@ -89,7 +90,7 @@ class PackageTable extends Component {
 				Header: PACKAGE_STATE_LABEL,
 				id: PACKAGE_STATE_ID,
 				accessor: (row) => {
-					return '';
+					return getStateDisplayText(row.state, this.props.stateDisplayMap);
 				}
 			}, {
 				Header: GLOBUS_LINK_LABEL,
@@ -187,7 +188,8 @@ class PackageTable extends Component {
 }
 
 PackageTable.propTypes = {
-		packages: PropTypes.arrayOf(PropTypes.object)
+		packages: PropTypes.arrayOf(PropTypes.object),
+		stateDisplayMap: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default PackageTable;
