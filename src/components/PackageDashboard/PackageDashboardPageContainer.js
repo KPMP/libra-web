@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getPackages, movePackageFiles } from "../../actions/Packages/packageActions";
+import { getPackages, movePackageFiles, getStateDisplayMap } from "../../actions/Packages/packageActions";
 import PackageDashboardPage from './PackageDashboardPage';
 
 const mapStateToProps = (state, props) => ({
@@ -9,6 +9,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
     getPackages() {
         dispatch(getPackages());
+        dispatch(getStateDisplayMap());
     },
     movePackageFiles(packageId) {
         dispatch(movePackageFiles(packageId));
