@@ -34,3 +34,22 @@ export const setPackages = (packages) => {
         payload: packages
     }
 }
+
+export const setStateDisplayMap = (stateDisplayMap) => {
+	return {
+		type: actionNames.SET_STATE_DISPLAY_MAP,
+		payload: stateDisplayMap
+	}
+}
+
+export const getStateDisplayMap = () => {
+	 return (dispatch) => {
+        api.get('/api/v1/state/stateDisplayMap')
+            .then(res => {
+                dispatch(setStateDisplayMap(res.data));
+            })
+            .catch(err => {
+                dispatch(sendMessageToBackend(err));
+            });
+    };
+}
