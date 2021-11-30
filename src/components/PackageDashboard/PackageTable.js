@@ -3,8 +3,11 @@ import ReactTable from 'react-table';
 import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
 import Moment from 'moment';
-import stateMap from './stateMap';
-import { Button } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
+import { getStateDisplayText } from './stateDisplayHelper';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { CSVLink } from 'react-csv';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const PACKAGE_ID_LABEL = 'Package ID';
 const PACKAGE_TYPE_LABEL = 'Package Type';
@@ -49,6 +52,7 @@ class PackageTable extends Component {
 		};
 	};
 
+
 	getColumns() {
 		return [
 			{
@@ -90,10 +94,7 @@ class PackageTable extends Component {
 				Header: PACKAGE_STATE_LABEL,
 				id: PACKAGE_STATE_ID,
 				accessor: (row) => {
-					if (row.state && row.state[PACKAGE_STATE_ID]) {
-						return stateMap.has(row.state[PACKAGE_STATE_ID]) ? stateMap.get(row.state[PACKAGE_STATE_ID]) : row.state[PACKAGE_STATE_ID];
-					}
-					return '';
+					return getStateDisplayText(row.state, this.props.stateDisplayMap);
 				}
 			}, {
 				Header: GLOBUS_LINK_LABEL,
@@ -171,27 +172,58 @@ class PackageTable extends Component {
 		});
 	}
 
+	prepareData = (packages) => {
+		return packages.map((pkg) => {
+			return {
+				[PACKAGE_ID_LABEL]: pkg[PACKAGE_INFO_PROPERTY][PACKAGE_ID],
+				[SUBJECT_ID_LABEL]: pkg[PACKAGE_INFO_PROPERTY][SUBJECT_ID],
+				[PACKAGE_TYPE_LABEL]: pkg[PACKAGE_INFO_PROPERTY][PACKAGE_TYPE_ID],
+				[SUBMITTER_LABEL]: pkg[PACKAGE_INFO_PROPERTY].submitter && pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] ? pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] : pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_FIRST_NAME] + ' ' + pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_LAST_NAME],
+				[TIS_NAME_LABEL]: pkg[PACKAGE_INFO_PROPERTY][TIS_NAME_ID],
+				[DATE_SUBMITTED_LABEL]: new Moment(pkg[PACKAGE_INFO_PROPERTY][DATE_SUBMITTED_ID]).local().format(DATE_FORMAT),
+				[PACKAGE_STATE_LABEL]: getStateDisplayText(pkg.state, this.props.stateDisplayMap)
+			}
+		});
+	}
+
 	render() {
-		return <ReactTable
-			data={this.props.packages}
-			ref={this.reactTable}
-			sorted={this.state.sorted}
-			filtered={this.state.filtered}
-			onSortedChange={this.onSortedChange}
-			onFilteredChange={this.onFilteredChange}
-			columns={this.state.columns}
-			defaultPageSize={12}
-			defaultFilterMethod={this.defaultFilterMethod}
-			filterable
-			className='-striped -highlight'
-			showPageSizeOptions={false}
-			noDataText={'No packages found'}
-		/>;
+		return (
+			<article>
+			<Row><Col xs={12} className='mb-2'>
+				<CSVLink
+					data={this.prepareData(this.props.packages)}
+					filename={'dmd-package-info.csv'}
+					target="_blank"
+					className="text-body icon-container"
+				>
+					<FontAwesomeIcon icon={faDownload} pull='right' />
+				</CSVLink>
+			</Col></Row>
+			<Row><Col xs={12}>
+				<ReactTable
+					data={this.props.packages}
+					ref={this.reactTable}
+					sorted={this.state.sorted}
+					filtered={this.state.filtered}
+					onSortedChange={this.onSortedChange}
+					onFilteredChange={this.onFilteredChange}
+					columns={this.state.columns}
+					defaultPageSize={12}
+					defaultFilterMethod={this.defaultFilterMethod}
+					filterable
+					className='-striped -highlight'
+					showPageSizeOptions={false}
+					noDataText={'No packages found'}
+				/>
+			</Col></Row>
+		</article>
+		);
 	}
 }
 
 PackageTable.propTypes = {
-		packages: PropTypes.arrayOf(PropTypes.object)
+		packages: PropTypes.arrayOf(PropTypes.object),
+		stateDisplayMap: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default PackageTable;

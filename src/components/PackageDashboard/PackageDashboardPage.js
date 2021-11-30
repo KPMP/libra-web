@@ -22,7 +22,9 @@ class PackageDashboardPage extends Component {
 				<Row className='mt-3'>
 					<Col sm={12}>
 					<PackageTable
-					packages={this.props.packages} movePackageFiles={this.props.movePackageFiles}
+						packages={this.props.packages} 
+						movePackageFiles={this.props.movePackageFiles}
+						stateDisplayMap={this.props.stateDisplayMap}
 					/>
 					</Col>
 				</Row>
