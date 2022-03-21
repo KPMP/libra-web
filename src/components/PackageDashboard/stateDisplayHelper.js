@@ -1,7 +1,9 @@
 export const getStateDisplayText = (state, stateDisplayMap) => {
-	
+	if (!stateDisplayMap) {
+		return '';
+	}
 	let stateDisplayText = stateDisplayMap.filter(function(stateDisplayItem) {
-		if (stateDisplayItem.state === state.state) {
+		if (state && stateDisplayItem && (stateDisplayItem.state === state.state)) {
 			return stateDisplayItem;
 		}
 	   return undefined; 
