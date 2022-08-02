@@ -9,7 +9,7 @@ class NavBar extends Component {
         <Col xs={6}>
           <Link to="/" className="navbar-header">
             <NavbarBrand tag="span" className="d-flex align-items-center">
-              <img src="img/logo.png" alt="Data Manager" className="logo" />
+              <img src="/img/logo.png" alt="Data Manager" className="logo" />
               <span id="title-text" className="ml-2 text-dark">Data Manager</span>
             </NavbarBrand>
           </Link>
