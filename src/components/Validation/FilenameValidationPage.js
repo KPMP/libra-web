@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Button,  } from 'reactstrap';
+import { Container, Row, Col, Button, Alert } from 'reactstrap';
 import ValidationResult from './ValidationResult';
 
 class FilenameValidationPage extends Component {
