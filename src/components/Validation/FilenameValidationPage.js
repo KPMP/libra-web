@@ -47,7 +47,7 @@ class FilenameValidationPage extends Component {
 		} else {
 			return (
 				<Container>
-					{ this.props.validationResult && !this.props.validationResult.directoryExists &&
+					{Object.keys(this.props.validationResult).length !== 0 && this.props.validationResult.constructor === Object && !this.props.validationResult.directoryExists &&
 
 						<Alert color="danger">
 							The package directory doesn't exist in Globus!
