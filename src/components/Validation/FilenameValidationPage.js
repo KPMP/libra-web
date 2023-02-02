@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col, Button, Alert } from 'reactstrap';
 import ValidationResult from './ValidationResult';
 
 class FilenameValidationPage extends Component {
@@ -31,7 +31,7 @@ class FilenameValidationPage extends Component {
 	render() {
 		const { packageId, filenames } = this.state;
 		const isEnabled = packageId.length > 0 && filenames.length > 0;
-		if (Object.keys(this.props.validationResult).length !== 0 && this.props.validationResult.constructor === Object) {
+		if (Object.keys(this.props.validationResult).length !== 0 && this.props.validationResult.constructor === Object && this.props.validationResult.directoryExists) {
 			let filesNotInGlobus = this.props.validationResult.metadataFilesNotFoundInGlobus;
 			let filesNotInMetadata = this.props.validationResult.globusFilesNotFoundInMetadata;
 			let isSuccess = !filesNotInGlobus && !filesNotInMetadata;
@@ -47,6 +47,13 @@ class FilenameValidationPage extends Component {
 		} else {
 			return (
 				<Container>
+					{Object.keys(this.props.validationResult).length !== 0 && this.props.validationResult.constructor === Object && !this.props.validationResult.directoryExists &&
+
+						<Alert color="danger">
+							The package directory doesn't exist in Globus!
+						</Alert>
+
+					}
 					<form onSubmit={this.handleSubmit}>
 						<Row className='mt-3'>
 							<Col sm={3}>
