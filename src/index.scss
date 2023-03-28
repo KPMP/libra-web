@@ -18,3 +18,19 @@
 .heavierText {
   font-weight: 700;
 }
+#not-found-page {
+  padding: 20px;
+  background-color: #FAFBFC; }
+  #not-found-page .not-found-image {
+    max-width: 90%;
+    margin-top: 30px;
+    margin-right: 40px; }
+  #not-found-page .not-found-container {
+    max-width: 60%;
+    margin: auto; }
+  #not-found-page .not-found-text {
+    padding-top: 30px; }
+    #not-found-page .not-found-text .not-found-regular {
+      font-size: 32px; }
+    #not-found-page .not-found-text .not-found-small {
+      font-size: 24px; }
