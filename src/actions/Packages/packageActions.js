@@ -18,23 +18,23 @@ export const getPackages = () => {
 
 export const movePackageFiles = (packageId) => {
     return (dispatch) => {
-        api.post('/api/v1/packages/' + packageId + '/files/move')
-            .then(res => {
-                if (res.status === 202) {
-                    alert("Request submitted")
-                } else {
-                    alert(res.status)
-                }
+        const posted = api.post('/api/v1/packages/' + packageId + '/files/move');
+        posted.then(res => {
+            if (res.status === 202) {
+                alert("Request submitted")
+            } else {
+                alert(res.status)
+            }
                 
-            })
-            .catch(err => {
-                if (err.response.status === 202) {
-                    alert ("request submitted (in error)")
-                } else {
-                    alert("There was a problem moving the files.");
-                }
+        })
+        posted.catch(err => {
+            if (err.response.status === 201) {
+                alert ("request submitted (in error)")
+            } else {
+                alert("There was a problem moving the files.");
+            }
                 
-            });
+        });
     }
 }
 
