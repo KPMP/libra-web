@@ -22,7 +22,9 @@ export const movePackageFiles = (packageId) => {
             .then(res => {
                 if (res.status === 202) {
                     alert("Request submitted")
-                } 
+                } else {
+                    alert(res.status)
+                }
                 
             })
             .catch(err => {
