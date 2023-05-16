@@ -20,10 +20,18 @@ export const movePackageFiles = (packageId) => {
     return (dispatch) => {
         api.post('/api/v1/packages/' + packageId + '/files/move')
             .then(res => {
-                alert(res.data);
+                if (res.status === 202) {
+                    alert("Request submitted")
+                } 
+                
             })
             .catch(err => {
-                alert("There was a problem moving the files.");
+                if (err.response.status === 202) {
+                    alert ("request submitted (in error)")
+                } else {
+                    alert("There was a problem moving the files.");
+                }
+                
             });
     }
 }
