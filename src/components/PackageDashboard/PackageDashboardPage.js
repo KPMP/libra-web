@@ -21,6 +21,13 @@ class PackageDashboardPage extends Component {
 				</Row>
 				<Row className='mt-3'>
 					<Col sm={12}>
+						<Link className='float-right' to='/packageEditor'>
+							<Button color='primary'>Edit Package</Button>
+						</Link>
+					</Col>
+				</Row>
+				<Row className='mt-3'>
+					<Col sm={12}>
 					<PackageTable
 						packages={this.props.packages} 
 						movePackageFiles={this.props.movePackageFiles}

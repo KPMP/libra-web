@@ -16,6 +16,7 @@ import PackageDashboardPageContainer from './components/PackageDashboard/Package
 import FilenameValidationPageContainer from './components/Validation/FilenameValidationPageContainer';
 import PermissionDenied from './components/Error/PermissionDenied';
 import NotRegistered from './components/Error/NotRegistered';
+import PackageEditor from './components/PackageEditor/PackageEditor';
 
 const cacheStore = window.sessionStorage.getItem('redux-store');
 const initialState = cacheStore ? JSON.parse(cacheStore) : loadedState;
@@ -66,6 +67,7 @@ class App extends Component {
 						<Switch>
 							<Route exact path='/' component={PackageDashboardPageContainer} store={store} />
 							<Route exact path='/filenameValidation' component={FilenameValidationPageContainer} store={store}/>
+							<Route exact path='/packageEditor' component={PackageEditor} store={store}/>
 							<Route exact path='/oops' component={Oops} />
 							<Route exact path='/permissionDenied' component={PermissionDenied} />
 							<Route exact path='/notRegistered' component={NotRegistered} />
