@@ -29,9 +29,15 @@ export const movePackageFiles = (packageId) => {
 }
 
 export const setPackages = (packages) => {
+        let filteredPackages = [];
+        packages.forEach((packageItem) => {
+                if (packageItem.packageInfo.packageType !== 'Electron Microscopy Imaging') {
+                        filteredPackages.push(packageItem)
+                }
+        });
     return {
         type: actionNames.SET_PACKAGES,
-        payload: packages
+        payload: filteredPackages
     }
 }
 
