@@ -6,7 +6,7 @@ const api = Api.getInstance();
 
 export const getPackages = () => {
     return (dispatch) => {
-        api.get('/api/v1/packages')
+        api.get('/api/v1/packages/exclude/false')
             .then(res => {
                 dispatch(setPackages(res.data));
             })
