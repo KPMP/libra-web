@@ -13,7 +13,7 @@ export const setValidationResult = (result) => {
 
 export const validateFilenames = (formData) => {
 	return (dispatch) => {
-		api.post('/api//v1/package/files/validation', formData)
+		api.post('/api/v1/package/files/validation', formData)
 			.then((res) => {
 				dispatch(setValidationResult(res.data));
 			})
