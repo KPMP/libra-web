@@ -31,6 +31,8 @@ const PACKAGE_INFO_PROPERTY = 'packageInfo';
 const PACKAGE_STATE_ID = 'state';
 const SUBJECT_ID = 'subjectId';
 const LARGE_FILE_UPLOAD = 'largeFilesChecked';
+const GLOBUS_MOVE_STATUS = "globusMoveStatus";
+const ERROR_MESSAGE = "errorMessage";
 
 // package id, submitter, package type, tis name, date submitted
 class PackageTable extends Component {
@@ -123,10 +125,25 @@ class PackageTable extends Component {
 					let row = info.original;
 					// eslint-disable-next-line
 					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD] && row.state[PACKAGE_STATE_ID] === 'METADATA_RECEIVED') {
-						return (
-							// eslint-disable-next-line
-							<Button color="primary" onClick={() => this.handleMoveFileClick(row[PACKAGE_INFO_PROPERTY][PACKAGE_ID])}>Move Files</Button>
-						);
+						if(row[GLOBUS_MOVE_STATUS] === null || row[GLOBUS_MOVE_STATUS] === ""){
+							return (
+								// eslint-disable-next-line
+								<Button color="primary" onClick={() => this.handleMoveFileClick(row[PACKAGE_INFO_PROPERTY][PACKAGE_ID])}>Move Files</Button>
+							);
+						}
+						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "processing" || row[GLOBUS_MOVE_STATUS].toLowerCase() === "waiting") {
+							return (
+								<p>awaiting move</p>
+							);
+						}
+						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "error"){
+							return (
+								<p>{row[ERROR_MESSAGE]}</p>
+							);
+						}
+						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "success") {
+							return '';
+						}
 					} else {
 						// eslint-disable-next-line
 						return '';
