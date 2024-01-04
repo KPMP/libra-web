@@ -1,136 +1,180 @@
 body {
   font-size: 14px;
-  background-color: #FAFBFC; }
+  background-color: #FAFBFC;
+}
 
 #footer {
-  background: #283C5E; }
+  background: #283C5E;
+}
 
 #navbar {
   background-color: white;
-  border-bottom: 1px solid #e7e7e7; }
-  #navbar .navbar-header {
-    text-decoration: none !important; }
-    #navbar .navbar-header .navbar-brand img.logo {
-      height: 50px; }
-  #navbar .navbar-brand {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important; }
-  #navbar #nav-user-dropdown-menu a:hover {
-    text-decoration: none !important; }
+  border-bottom: 1px solid #e7e7e7;
+}
+#navbar .navbar-header {
+  text-decoration: none !important;
+}
+#navbar .navbar-header .navbar-brand img.logo {
+  height: 50px;
+}
+#navbar .navbar-brand {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+#navbar #nav-user-dropdown-menu a:hover {
+  text-decoration: none !important;
+}
 
 .container-fluid {
   margin-left: 0px !important;
   margin-right: 0px !important;
   padding-right: 0px !important;
-  padding-left: 0px !important; }
+  padding-left: 0px !important;
+}
 
 #root {
   position: relative;
   overflow-y: scroll;
   /* xs to sm */
   top: calc(59px);
-  height: calc(100vh + 10px - 59px - 32px);
-  /* md and up */ }
-  @media (min-width: 768px) {
-    #root {
-      top: calc(59px);
-      height: calc(100vh + 10px - 59px - 32px); } }
+  height: calc(100vh + 10px
+		- 59px
+		- 32px);
+  /* md and up */
+}
+@media (min-width: 768px) {
+  #root {
+    top: calc(59px);
+    height: calc(100vh + 10px
+			- 59px
+			- 32px);
+  }
+}
 
 #oops-content {
-  margin-top: 150px; }
-  #oops-content .oops-big {
-    font-size: 72px; }
-  #oops-content .oops-small {
-    font-size: 32px; }
-  #oops-content #oops-image {
-    width: 385px;
-    height: 330px; }
+  margin-top: 150px;
+}
+#oops-content .oops-big {
+  font-size: 72px;
+}
+#oops-content .oops-small {
+  font-size: 32px;
+}
+#oops-content #oops-image {
+  width: 385px;
+  height: 330px;
+}
 
 #not-found-page {
   padding: 20px;
-  background-color: #FAFBFC; }
-  #not-found-page .not-found-image {
-    max-width: 90%;
-    margin-top: 30px;
-    margin-right: 40px; }
-  #not-found-page .not-found-container {
-    max-width: 60%;
-    margin: auto; }
-  #not-found-page .not-found-text {
-    padding-top: 30px; }
-    #not-found-page .not-found-text .not-found-regular {
-      font-size: 32px; }
-    #not-found-page .not-found-text .not-found-small {
-      font-size: 24px; }
+  background-color: #FAFBFC;
+}
+#not-found-page .not-found-image {
+  max-width: 90%;
+  margin-top: 30px;
+  margin-right: 40px;
+}
+#not-found-page .not-found-container {
+  max-width: 60%;
+  margin: auto;
+}
+#not-found-page .not-found-text {
+  padding-top: 30px;
+}
+#not-found-page .not-found-text .not-found-regular {
+  font-size: 32px;
+}
+#not-found-page .not-found-text .not-found-small {
+  font-size: 24px;
+}
 
 @media (max-width: 764px) {
   .MuiTableRow-root.MuiTableRow-head th:nth-child(5) {
-    display: none; }
+    display: none;
+  }
   .MuiTableBody-root tr td:nth-child(5) {
-    display: none; } }
-
+    display: none;
+  }
+}
 body #homepage {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue"; }
-  body #homepage p, body #homepage h1, body #homepage h2, body #homepage h3, body #homepage h4, body #homepage h5, body #homepage h6, body #homepage a {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue"; }
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue";
+}
+body #homepage p, body #homepage h1, body #homepage h2, body #homepage h3, body #homepage h4, body #homepage h5, body #homepage h6, body #homepage a {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue";
+}
 
 #root #homepage .row {
   margin-right: 15px;
-  margin-left: 15px; }
-
+  margin-left: 15px;
+}
 #root #homepage .btn-primary {
-  background-color: #1c7cd5; }
-
+  background-color: #1c7cd5;
+}
 #root #homepage #summary-plot .row {
-  margin: 0px; }
-
+  margin: 0px;
+}
 #root #homepage #summary-plot .col-12 {
-  padding: 0px; }
-
+  padding: 0px;
+}
 #root #homepage .samples-plot-header {
   margin-left: 305px;
-  font-size: 16px; }
-
+  font-size: 16px;
+}
 #root #homepage #title-text {
   font-size: 20px;
-  font-weight: 500; }
-  @media only screen and (max-width: 767px) {
-    #root #homepage #title-text {
-      display: none; } }
+  font-weight: 500;
+}
+@media only screen and (max-width: 767px) {
+  #root #homepage #title-text {
+    display: none;
+  }
+}
 
 .validationImage {
-  height: 150px; }
+  height: 150px;
+}
 
 .validationMessage {
   vertical-align: bottom;
   height: 150px;
-  display: table-cell; }
+  display: table-cell;
+}
 
 .resultHeader {
   background-color: lightgray;
-  font-weight: 700; }
+  font-weight: 700;
+}
 
 .heavierText {
-  font-weight: 700; }
+  font-weight: 700;
+}
 
 #not-found-page {
   padding: 20px;
-  background-color: #FAFBFC; }
+  background-color: #FAFBFC;
+}
 
 #not-found-page .not-found-image {
   max-width: 90%;
   margin-top: 30px;
-  margin-right: 40px; }
+  margin-right: 40px;
+}
 
 #not-found-page .not-found-container {
   max-width: 60%;
-  margin: auto; }
+  margin: auto;
+}
 
 #not-found-page .not-found-text {
-  padding-top: 30px; }
+  padding-top: 30px;
+}
 
 #not-found-page .not-found-text .not-found-regular {
-  font-size: 32px; }
+  font-size: 32px;
+}
 
 #not-found-page .not-found-text .not-found-small {
-  font-size: 24px; }
+  font-size: 24px;
+}
+
+/*# sourceMappingURL=index.css.map */
