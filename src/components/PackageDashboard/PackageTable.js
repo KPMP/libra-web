@@ -60,7 +60,6 @@ class PackageTable extends Component {
 	async componentDidMount() {
 
 		if (!this.state.isLoaded) {
-			console.log("Here")
 			let packages = await getPackagesStateless();
 			this.setState({packages: packages, isLoaded: true});
 		}

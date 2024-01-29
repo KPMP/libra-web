@@ -10,11 +10,4 @@ describe('packages', () => {
 		expect(packages([], action)).toEqual([]);
 	});
 	
-	it('should return the new state if known action', () => {
-		let action = {
-				type: actionNames.SET_PACKAGES,
-				payload: 'new stuff'
-		};
-		expect(packages([], action)).toEqual('new stuff');
-	});
 });

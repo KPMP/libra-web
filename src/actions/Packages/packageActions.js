@@ -12,28 +12,9 @@ export const getPackagesStateless = () => {
         })
         .catch(error => {
             console.log(error)
-            // logError(error);
+            alert("We hit an error getting packages...talk to a dev.")
         });
-}
-
-// export const logError = (error) => {
-//     return(dispatch) => {
-//         dispatch(sendMessageToBackend(error));
-//     }
-// }
-    
-
-export const getPackages = () => {
-    return (dispatch) => {
-        api.get('/api/v1/packages?shouldExclude=false')
-            .then(res => {
-                dispatch(setPackages(res.data));
-            })
-            .catch(err => {
-                dispatch(sendMessageToBackend(err));
-            });
-    };
-}
+}   
 
 export const movePackageFiles = (packageId) => {
     return (dispatch) => {
@@ -44,13 +25,6 @@ export const movePackageFiles = (packageId) => {
             .catch(err => {
                 alert("There was a problem moving the files.");
             });
-    }
-}
-
-export const setPackages = (packages) => {
-    return {
-        type: actionNames.SET_PACKAGES,
-        payload: packages
     }
 }
 
