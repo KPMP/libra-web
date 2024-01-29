@@ -228,14 +228,14 @@ class PackageTable extends Component {
 			return (
 				<article>
 				<Row><Col xs={12} className='mb-2'>
-					<CSVLink
+					{/* <CSVLink
 						data={this.prepareData(this.state.packages)}
 						filename={'dmd-package-info.csv'}
 						target="_blank"
 						className="text-body icon-container"
 					>
 						<FontAwesomeIcon icon={faDownload} pull='right' />
-					</CSVLink>
+					</CSVLink> */}
 				</Col></Row>
 				<Row><Col xs={12}>
 					<ReactTable
