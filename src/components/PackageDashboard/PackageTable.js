@@ -51,7 +51,8 @@ class PackageTable extends Component {
 			sorted: [],
 			filtered: [],
 			columns: this.getColumns(),
-			packages: []
+			packages: [],
+			isLoaded: false
 		};
 	};
 
@@ -61,7 +62,7 @@ class PackageTable extends Component {
 
 	async getPackages() {
 		let packages = await this.props.getPackages();
-		this.setState({packages: packages});
+		this.setState({packages: packages, isLoaded: true});
 	}
 
 
@@ -200,6 +201,7 @@ class PackageTable extends Component {
 	}
 
 	prepareData = (packages) => {
+		console.log(packages)
 		return packages.map((pkg) => {
 			return {
 				[PACKAGE_ID_LABEL]: pkg[PACKAGE_INFO_PROPERTY][PACKAGE_ID],
@@ -215,8 +217,7 @@ class PackageTable extends Component {
 
 
 	render() {
-		let message = null;
-		if (this.state.packages && this.state.packages.length === 0) {
+		if (!this.state.isLoaded) {
 			return <h4>Loading packages...</h4>
 		} else {
 			return (
