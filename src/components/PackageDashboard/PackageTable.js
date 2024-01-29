@@ -215,12 +215,11 @@ class PackageTable extends Component {
 	}
 
 	render() {
-		if (!this.state.isLoaded) {
+		if (this.state.packages.length === 0) {
 			return (
 				<h4>Loading packages...</h4>
 			)
 		} else {
-			this.setState({columns: this.getColumns()});
 			return (
 				<article>
 				<Row><Col xs={12} className='mb-2'>
@@ -241,7 +240,7 @@ class PackageTable extends Component {
 						filtered={this.state.filtered}
 						onSortedChange={this.onSortedChange}
 						onFilteredChange={this.onFilteredChange}
-						columns={this.state.columns}
+						columns={this.getColumns()}
 						defaultPageSize={12}
 						defaultFilterMethod={this.defaultFilterMethod}
 						filterable
