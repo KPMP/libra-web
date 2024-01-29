@@ -61,17 +61,10 @@ class PackageTable extends Component {
 
 		if (!this.state.isLoaded) {
 			console.log("Here")
-			await this.getPackages();
+			let packages = await getPackagesStateless();
+			this.setState({packages: packages, isLoaded: true});
 		}
 	}
-
-	async getPackages() {
-		console.log("getting packages ")
-		let packages = await getPackagesStateless();
-		this.setState({packages: packages, isLoaded: true});
-	}
-
-
 
 	getColumns() {
 		return [
