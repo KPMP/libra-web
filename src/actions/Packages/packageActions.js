@@ -4,6 +4,18 @@ import { sendMessageToBackend } from '../Error/errorActions';
 
 const api = Api.getInstance();
 
+export const getPackagesStateless = () => {
+    return (dispatch) => {
+        api.get('/api/v1/packages?shouldExclude=false')
+        .then(res=> {
+            return res.data
+        })
+        .catch(err => {
+            dispatch(sendMessageToBackend(err));
+        });
+    }
+}
+
 export const getPackages = () => {
     return (dispatch) => {
         api.get('/api/v1/packages?shouldExclude=false')
