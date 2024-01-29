@@ -61,7 +61,9 @@ class PackageTable extends Component {
 	}
 
 	async getPackages() {
+		console.log("Getting packages")
 		let packages = await this.props.getPackages();
+		console.log(packages);
 		this.setState({packages: packages, isLoaded: true});
 	}
 
