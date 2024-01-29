@@ -8,9 +8,11 @@ export const getPackagesStateless = () => {
     
     api.get('/api/v1/packages?shouldExclude=false')
         .then(res=> {
+            console.log(res.data)
             return res.data
         })
         .catch(error => {
+            console.log(error)
             // logError(error);
         });
 }
