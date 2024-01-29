@@ -53,7 +53,8 @@ class PackageTable extends Component {
 			filtered: [],
 			columns: [],
 			packages: [],
-			isLoaded: false
+			isLoaded: false,
+			preparedData: []
 		};
 	};
 
@@ -65,9 +66,10 @@ class PackageTable extends Component {
 
 	async getPackages() {
 		let packages = await getPackagesStateless();
+		let preparedData = this.prepareData(packages);
 		
 		console.log(packages)
-		this.setState({packages: packages, isLoaded: true});
+		this.setState({packages: packages, preparedData: preparedData, isLoaded: true});
 	}
 
 
@@ -206,9 +208,8 @@ class PackageTable extends Component {
 		});
 	}
 
-	prepareData = () => {
-		console.log(this.state.packages)
-		return this.state.packages.map((pkg) => {
+	prepareData = (packages) => {
+		return packages.map((pkg) => {
 			return {
 				[PACKAGE_ID_LABEL]: pkg[PACKAGE_INFO_PROPERTY][PACKAGE_ID],
 				[SUBJECT_ID_LABEL]: pkg[PACKAGE_INFO_PROPERTY][SUBJECT_ID],
@@ -222,7 +223,6 @@ class PackageTable extends Component {
 	}
 
 	render() {
-		console.log(this.state.isLoaded)
 		if (!this.state.isLoaded) {
 			return (
 				<h4>Loading packages...</h4>
@@ -233,7 +233,7 @@ class PackageTable extends Component {
 				<article>
 				<Row><Col xs={12} className='mb-2'>
 					<CSVLink
-						data={this.prepareData()}
+						data={this.state.preparedData}
 						filename={'dmd-package-info.csv'}
 						target="_blank"
 						className="text-body icon-container"
