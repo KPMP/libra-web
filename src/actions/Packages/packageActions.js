@@ -6,7 +6,7 @@ const api = Api.getInstance();
 
 export const getPackagesStateless = () => {
     
-    api.get('/api/v1/packages?shouldExclude=false')
+    return api.get('/api/v1/packages?shouldExclude=false')
         .then(res=> {
             console.log(res.data)
             return res.data
