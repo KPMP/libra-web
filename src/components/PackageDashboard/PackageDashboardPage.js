@@ -5,6 +5,10 @@ import PackageTable from './PackageTable';
 
 class PackageDashboardPage extends Component {
 
+	componentDidMount() {
+		this.props.getStateDisplay();
+	}
+
 	render() {
 		return ( 
 			<Container id='package-dashboard-page'>
