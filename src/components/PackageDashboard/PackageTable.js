@@ -55,7 +55,6 @@ class PackageTable extends Component {
 			packages: [],
 			isLoaded: false
 		};
-		this.pollIfMounted = this.pollIfMounted.bind(this);
 	};
 
 	async componentDidMount() {
