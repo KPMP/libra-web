@@ -59,11 +59,12 @@ class PackageTable extends Component {
 
 	async componentDidMount() {
 		await this.getPackages();
-		console.log(this.state.packages)
 	}
 
 	async getPackages() {
 		let packages = await getPackagesStateless();
+		
+		console.log("packages received")
 		this.setState({packages: packages, isLoaded: true});
 	}
 
@@ -216,6 +217,7 @@ class PackageTable extends Component {
 	}
 
 	render() {
+		console.log(this.state.isLoaded)
 		if (!this.state.isLoaded) {
 			return (
 				<h4>Loading packages...</h4>
