@@ -16,8 +16,11 @@ export const getPackagesStateless = () => {
 }
 
 export const logError = (error) => {
-    dispatch(sendMessageToBackend(error));
+    return(dispatch) => {
+        dispatch(sendMessageToBackend(error));
+    }
 }
+    
 
 export const getPackages = () => {
     return (dispatch) => {
