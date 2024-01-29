@@ -213,36 +213,46 @@ class PackageTable extends Component {
 		});
 	}
 
+
 	render() {
+		let message = null;
+		if (this.state.packages.length === 0) {
+			message = "Loading packages...";
+		}
 		return (
-			<article>
-			<Row><Col xs={12} className='mb-2'>
-				<CSVLink
-					data={this.prepareData(this.state.packages)}
-					filename={'dmd-package-info.csv'}
-					target="_blank"
-					className="text-body icon-container"
-				>
-					<FontAwesomeIcon icon={faDownload} pull='right' />
-				</CSVLink>
-			</Col></Row>
-			<Row><Col xs={12}>
-				<ReactTable
-					data={this.state.packages}
-					ref={this.reactTable}
-					sorted={this.state.sorted}
-					filtered={this.state.filtered}
-					onSortedChange={this.onSortedChange}
-					onFilteredChange={this.onFilteredChange}
-					columns={this.state.columns}
-					defaultPageSize={12}
-					defaultFilterMethod={this.defaultFilterMethod}
-					filterable
-					className='-striped -highlight'
-					showPageSizeOptions={false}
-					noDataText={'No packages found'}
-				/>
-			</Col></Row>
+			<article>{ message !== null ?
+				<h4>{message}</h4>
+				:
+				<article>
+					<Row><Col xs={12} className='mb-2'>
+						<CSVLink
+							data={this.prepareData(this.state.packages)}
+							filename={'dmd-package-info.csv'}
+							target="_blank"
+							className="text-body icon-container"
+						>
+							<FontAwesomeIcon icon={faDownload} pull='right' />
+						</CSVLink>
+					</Col></Row>
+					<Row><Col xs={12}>
+						<ReactTable
+							data={this.state.packages}
+							ref={this.reactTable}
+							sorted={this.state.sorted}
+							filtered={this.state.filtered}
+							onSortedChange={this.onSortedChange}
+							onFilteredChange={this.onFilteredChange}
+							columns={this.state.columns}
+							defaultPageSize={12}
+							defaultFilterMethod={this.defaultFilterMethod}
+							filterable
+							className='-striped -highlight'
+							showPageSizeOptions={false}
+							noDataText={'No packages found'}
+						/>
+					</Col></Row>
+				</article>
+			}
 		</article>
 		);
 	}
