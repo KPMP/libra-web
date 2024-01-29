@@ -55,10 +55,13 @@ class PackageTable extends Component {
 			packages: [],
 			isLoaded: false
 		};
+		this.pollIfMounted = this.pollIfMounted.bind(this);
 	};
 
 	async componentDidMount() {
-		await this.getPackages();
+		if (!this.state.isLoaded) {
+			await this.getPackages();
+		}
 	}
 
 	async getPackages() {
@@ -67,6 +70,8 @@ class PackageTable extends Component {
 		console.log(packages)
 		this.setState({packages: packages, isLoaded: true});
 	}
+
+
 
 	getColumns() {
 		return [
