@@ -53,8 +53,7 @@ class PackageTable extends Component {
 			filtered: [],
 			columns: [],
 			packages: [],
-			isLoaded: false,
-			preparedData: []
+			isLoaded: false
 		};
 	};
 
@@ -66,10 +65,7 @@ class PackageTable extends Component {
 
 	async getPackages() {
 		let packages = await getPackagesStateless();
-		let preparedData = this.prepareData(packages);
-		
-		console.log(packages)
-		this.setState({packages: packages, preparedData: preparedData, isLoaded: true});
+		this.setState({packages: packages, isLoaded: true});
 	}
 
 
@@ -233,7 +229,7 @@ class PackageTable extends Component {
 				<article>
 				<Row><Col xs={12} className='mb-2'>
 					<CSVLink
-						data={this.state.preparedData}
+						data={this.prepareData(this.state.packages)}
 						filename={'dmd-package-info.csv'}
 						target="_blank"
 						className="text-body icon-container"
