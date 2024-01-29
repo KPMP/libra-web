@@ -216,7 +216,7 @@ class PackageTable extends Component {
 
 	render() {
 		let message = null;
-		if (this.state.packages.length === 0) {
+		if (this.state.packages && this.state.packages.length === 0) {
 			return <h4>Loading packages...</h4>
 		} else {
 			return (
