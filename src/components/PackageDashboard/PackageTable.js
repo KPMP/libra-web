@@ -50,9 +50,19 @@ class PackageTable extends Component {
 		this.state = {
 			sorted: [],
 			filtered: [],
-			columns: this.getColumns()
+			columns: this.getColumns(),
+			packages: []
 		};
 	};
+
+	async componentDidMount() {
+		await this.getPackages();
+	}
+
+	async getPackages() {
+		let packages = await this.props.getPackages();
+		this.setState({packages: packages});
+	}
 
 
 	getColumns() {
@@ -208,7 +218,7 @@ class PackageTable extends Component {
 			<article>
 			<Row><Col xs={12} className='mb-2'>
 				<CSVLink
-					data={this.prepareData(this.props.packages)}
+					data={this.prepareData(this.state.packages)}
 					filename={'dmd-package-info.csv'}
 					target="_blank"
 					className="text-body icon-container"
@@ -218,7 +228,7 @@ class PackageTable extends Component {
 			</Col></Row>
 			<Row><Col xs={12}>
 				<ReactTable
-					data={this.props.packages}
+					data={this.state.packages}
 					ref={this.reactTable}
 					sorted={this.state.sorted}
 					filtered={this.state.filtered}
@@ -239,7 +249,8 @@ class PackageTable extends Component {
 }
 
 PackageTable.propTypes = {
-		packages: PropTypes.arrayOf(PropTypes.object),
+		getPackages: PropTypes.func,
+		movePackageFile: PropTypes.func,
 		stateDisplayMap: PropTypes.arrayOf(PropTypes.object)
 };
 

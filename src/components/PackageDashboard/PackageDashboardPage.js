@@ -5,10 +5,6 @@ import PackageTable from './PackageTable';
 
 class PackageDashboardPage extends Component {
 
-	componentDidMount() {
-		this.props.getPackages();
-	}
-
 	render() {
 		return ( 
 			<Container id='package-dashboard-page'>
@@ -22,7 +18,7 @@ class PackageDashboardPage extends Component {
 				<Row className='mt-3'>
 					<Col sm={12}>
 					<PackageTable
-						packages={this.props.packages} 
+						getPackages={this.props.getPackages}
 						movePackageFiles={this.props.movePackageFiles}
 						stateDisplayMap={this.props.stateDisplayMap}
 					/>
