@@ -6,20 +6,20 @@ const api = Api.getInstance();
 
 export const getPackagesStateless = () => {
     
-        api.get('/api/v1/packages?shouldExclude=false')
+    api.get('/api/v1/packages?shouldExclude=false')
         .then(res=> {
             return res.data
         })
         .catch(error => {
-            logError(error);
+            // logError(error);
         });
 }
 
-export const logError = (error) => {
-    return(dispatch) => {
-        dispatch(sendMessageToBackend(error));
-    }
-}
+// export const logError = (error) => {
+//     return(dispatch) => {
+//         dispatch(sendMessageToBackend(error));
+//     }
+// }
     
 
 export const getPackages = () => {
