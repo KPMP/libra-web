@@ -217,12 +217,9 @@ class PackageTable extends Component {
 	render() {
 		let message = null;
 		if (this.state.packages.length === 0) {
-			message = "Loading packages...";
-		}
-		return (
-			<article>{ message !== null ?
-				<h4>{message}</h4>
-				:
+			return <h4>Loading packages...</h4>
+		} else {
+			return (
 				<article>
 					<Row><Col xs={12} className='mb-2'>
 						<CSVLink
@@ -251,10 +248,9 @@ class PackageTable extends Component {
 							noDataText={'No packages found'}
 						/>
 					</Col></Row>
-				</article>
-			}
-		</article>
-		);
+			</article>
+			);
+		}
 	}
 }
 
