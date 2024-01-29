@@ -8,6 +8,9 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
+    getStateDisplay() {
+        dispatch(getStateDisplayMap());
+    },
     movePackageFiles(packageId) {
         dispatch(movePackageFiles(packageId));
     }
