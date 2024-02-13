@@ -20,7 +20,7 @@ export const movePackageFiles = (packageId) => {
     return (dispatch) => {
         api.post('/api/v1/packages/' + packageId + '/files/move')
             .then(res => {
-                alert(res.data);
+                alert("Package marked as ready to move.");
             })
             .catch(err => {
                 alert("There was a problem moving the files.");
