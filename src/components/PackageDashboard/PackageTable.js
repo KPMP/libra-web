@@ -185,6 +185,7 @@ class PackageTable extends Component {
 	}
 
 	handleMoveFileClick = (packageId) => {
+    console.log(packageId)
 		this.props.movePackageFiles(packageId);
 	};
 
