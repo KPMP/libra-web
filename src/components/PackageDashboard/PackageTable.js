@@ -115,7 +115,7 @@ class PackageTable extends Component {
 				Cell: (info) => {
 					let row = info.original;
 					// eslint-disable-next-line
-					let href = 'https://app.globus.org/file-manager?origin_id=d4560298-72ed-11ec-bdef-55fe55c2cfea&origin_path=/PROD_INBOX/' + row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]; 
+					let href = 'https://app.globus.org/file-manager?origin_id=d4560298-72ed-11ec-bdef-55fe55c2cfea&origin_path=/' + process.env.GLOBUS_INBOX + row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]; 
 					// eslint-disable-next-line
 					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD]) {
 						return (
