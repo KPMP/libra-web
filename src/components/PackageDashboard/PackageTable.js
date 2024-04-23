@@ -102,12 +102,6 @@ class PackageTable extends Component {
 				}
 			},
 			{
-				Header: PACKAGE_STATE_LABEL,
-				id: PACKAGE_STATE_ID,
-				accessor: (row) => {
-					return getStateDisplayText(row.state, this.props.stateDisplayMap);
-				}
-			}, {
 				Header: GLOBUS_LINK_LABEL,
 				accessor: 'link',
 				filterable: false,
@@ -134,13 +128,7 @@ class PackageTable extends Component {
 					let row = info.original;
 					// eslint-disable-next-line
 					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD] && row.state[PACKAGE_STATE_ID] === 'METADATA_RECEIVED') {
-						if(row[GLOBUS_MOVE_STATUS] === null || row[GLOBUS_MOVE_STATUS] === ""){
-							return (
-								// eslint-disable-next-line
-								<Button color="primary" onClick={() => this.handleMoveFileClick(row[PACKAGE_INFO_PROPERTY][PACKAGE_ID])}>Move Files</Button>
-							);
-						}
-						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "processing" || row[GLOBUS_MOVE_STATUS].toLowerCase() === "waiting") {
+						if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "processing" || row[GLOBUS_MOVE_STATUS].toLowerCase() === "waiting") {
 							return (
 								<p>awaiting move</p>
 							);
@@ -151,6 +139,9 @@ class PackageTable extends Component {
 							);
 						}
 						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "success") {
+							return '';
+						}
+						else {
 							return '';
 						}
 					} else {
@@ -206,8 +197,7 @@ class PackageTable extends Component {
 				[PACKAGE_TYPE_LABEL]: pkg[PACKAGE_INFO_PROPERTY][PACKAGE_TYPE_ID],
 				[SUBMITTER_LABEL]: pkg[PACKAGE_INFO_PROPERTY].submitter && pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] ? pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] : pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_FIRST_NAME] + ' ' + pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_LAST_NAME],
 				[TIS_NAME_LABEL]: pkg[PACKAGE_INFO_PROPERTY][TIS_NAME_ID],
-				[DATE_SUBMITTED_LABEL]: new Moment(pkg[PACKAGE_INFO_PROPERTY][DATE_SUBMITTED_ID]).local().format(DATE_FORMAT),
-				[PACKAGE_STATE_LABEL]: getStateDisplayText(pkg.state, this.props.stateDisplayMap)
+				[DATE_SUBMITTED_LABEL]: new Moment(pkg[PACKAGE_INFO_PROPERTY][DATE_SUBMITTED_ID]).local().format(DATE_FORMAT)
 			}
 		});
 	}
