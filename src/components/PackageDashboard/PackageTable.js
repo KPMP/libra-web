@@ -141,6 +141,9 @@ class PackageTable extends Component {
 						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "success") {
 							return '';
 						}
+						else {
+							return '';
+						}
 					} else {
 						// eslint-disable-next-line
 						return '';
