@@ -128,7 +128,12 @@ class PackageTable extends Component {
 					let row = info.original;
 					// eslint-disable-next-line
 					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD] && row.state[PACKAGE_STATE_ID] === 'METADATA_RECEIVED') {
-						if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "processing" || row[GLOBUS_MOVE_STATUS].toLowerCase() === "waiting") {
+						if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "processing") {
+							return (
+								<p>moving...</p>
+							);
+						}
+						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "waiting") {
 							return (
 								<p>awaiting move</p>
 							);
@@ -139,7 +144,9 @@ class PackageTable extends Component {
 							);
 						}
 						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "success") {
-							return '';
+							return (
+								<p>ready for review</p>
+							);
 						}
 						else {
 							return '';
