@@ -3,18 +3,17 @@ import ReactTable from 'react-table';
 import ReactGA from 'react-ga';
 import PropTypes from 'prop-types';
 import Moment from 'moment';
-import { Row, Col, Button } from 'reactstrap';
-import { getStateDisplayText } from './stateDisplayHelper';
+import { Row, Col } from 'reactstrap';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { CSVLink } from 'react-csv';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getPackagesStateless } from '../../actions/Packages/packageActions';
 
 const PACKAGE_ID_LABEL = 'Package ID';
 const PACKAGE_TYPE_LABEL = 'Package Type';
 const SUBMITTER_LABEL = 'Submitter';
 const TIS_NAME_LABEL = 'TIS Name';
 const DATE_SUBMITTED_LABEL = 'Date Submitted';
-const PACKAGE_STATE_LABEL = 'Package State';
 const SUBJECT_ID_LABEL = 'Subject Id';
 const GLOBUS_LINK_LABEL = 'Globus Link';
 const MOVE_PACKAGE_FILES_LABEL = 'Move Files to DLU';
@@ -50,10 +49,18 @@ class PackageTable extends Component {
 		this.state = {
 			sorted: [],
 			filtered: [],
-			columns: this.getColumns()
+			columns: [],
+			packages: [],
+			isLoaded: false
 		};
 	};
 
+	async componentDidMount() {
+		if (!this.state.isLoaded) {
+			let packages = await getPackagesStateless();
+			this.setState({packages: packages, isLoaded: true});
+		}
+	}
 
 	getColumns() {
 		return [
@@ -93,19 +100,13 @@ class PackageTable extends Component {
 				}
 			},
 			{
-				Header: PACKAGE_STATE_LABEL,
-				id: PACKAGE_STATE_ID,
-				accessor: (row) => {
-					return getStateDisplayText(row.state, this.props.stateDisplayMap);
-				}
-			}, {
 				Header: GLOBUS_LINK_LABEL,
 				accessor: 'link',
 				filterable: false,
 				Cell: (info) => {
 					let row = info.original;
 					// eslint-disable-next-line
-					let href = 'https://app.globus.org/file-manager?origin_id=d4560298-72ed-11ec-bdef-55fe55c2cfea&origin_path=/PROD_INBOX/' + row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]; 
+					let href = 'https://app.globus.org/file-manager?origin_id=d4560298-72ed-11ec-bdef-55fe55c2cfea&origin_path=/' + process.env.REACT_APP_GLOBUS_INBOX + row[PACKAGE_INFO_PROPERTY][PACKAGE_ID]; 
 					// eslint-disable-next-line
 					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD]) {
 						return (
@@ -125,13 +126,12 @@ class PackageTable extends Component {
 					let row = info.original;
 					// eslint-disable-next-line
 					if(row[PACKAGE_INFO_PROPERTY][LARGE_FILE_UPLOAD] && row.state[PACKAGE_STATE_ID] === 'METADATA_RECEIVED') {
-						if(row[GLOBUS_MOVE_STATUS] === null || row[GLOBUS_MOVE_STATUS] === ""){
+						if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "processing") {
 							return (
-								// eslint-disable-next-line
-								<Button color="primary" onClick={() => this.handleMoveFileClick(row[PACKAGE_INFO_PROPERTY][PACKAGE_ID])}>Move Files</Button>
+								<p>moving...</p>
 							);
 						}
-						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "processing" || row[GLOBUS_MOVE_STATUS].toLowerCase() === "waiting") {
+						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "waiting") {
 							return (
 								<p>awaiting move</p>
 							);
@@ -142,9 +142,20 @@ class PackageTable extends Component {
 							);
 						}
 						else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "success") {
+							return (
+								<p>ready for review</p>
+							);
+						}
+						else {
 							return '';
 						}
-					} else {
+					}
+					else if (row[GLOBUS_MOVE_STATUS].toLowerCase() === "success") {
+						return (
+							<p>ready for review</p>
+						);
+					}
+					else {
 						// eslint-disable-next-line
 						return '';
 					}
@@ -197,50 +208,54 @@ class PackageTable extends Component {
 				[PACKAGE_TYPE_LABEL]: pkg[PACKAGE_INFO_PROPERTY][PACKAGE_TYPE_ID],
 				[SUBMITTER_LABEL]: pkg[PACKAGE_INFO_PROPERTY].submitter && pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] ? pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_ID] : pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_FIRST_NAME] + ' ' + pkg[PACKAGE_INFO_PROPERTY].submitter[SUBMITTER_LAST_NAME],
 				[TIS_NAME_LABEL]: pkg[PACKAGE_INFO_PROPERTY][TIS_NAME_ID],
-				[DATE_SUBMITTED_LABEL]: new Moment(pkg[PACKAGE_INFO_PROPERTY][DATE_SUBMITTED_ID]).local().format(DATE_FORMAT),
-				[PACKAGE_STATE_LABEL]: getStateDisplayText(pkg.state, this.props.stateDisplayMap)
+				[DATE_SUBMITTED_LABEL]: new Moment(pkg[PACKAGE_INFO_PROPERTY][DATE_SUBMITTED_ID]).local().format(DATE_FORMAT)
 			}
 		});
 	}
 
 	render() {
-		return (
-			<article>
-			<Row><Col xs={12} className='mb-2'>
-				<CSVLink
-					data={this.prepareData(this.props.packages)}
-					filename={'dmd-package-info.csv'}
-					target="_blank"
-					className="text-body icon-container"
-				>
-					<FontAwesomeIcon icon={faDownload} pull='right' />
-				</CSVLink>
-			</Col></Row>
-			<Row><Col xs={12}>
-				<ReactTable
-					data={this.props.packages}
-					ref={this.reactTable}
-					sorted={this.state.sorted}
-					filtered={this.state.filtered}
-					onSortedChange={this.onSortedChange}
-					onFilteredChange={this.onFilteredChange}
-					columns={this.state.columns}
-					defaultPageSize={12}
-					defaultFilterMethod={this.defaultFilterMethod}
-					filterable
-					className='-striped -highlight'
-					showPageSizeOptions={false}
-					noDataText={'No packages found'}
-				/>
-			</Col></Row>
-		</article>
-		);
+		if (this.state.packages.length === 0) {
+			return (
+				<h4>Loading packages...</h4>
+			)
+		} else {
+			return (
+				<article>
+				<Row><Col xs={12} className='mb-2'>
+					<CSVLink
+						data={this.prepareData(this.state.packages)}
+						filename={'dmd-package-info.csv'}
+						target="_blank"
+						className="text-body icon-container"
+					>
+						<FontAwesomeIcon icon={faDownload} pull='right' />
+					</CSVLink>
+				</Col></Row>
+				<Row><Col xs={12}>
+					<ReactTable
+						data={this.state.packages}
+						ref={this.reactTable}
+						sorted={this.state.sorted}
+						filtered={this.state.filtered}
+						onSortedChange={this.onSortedChange}
+						onFilteredChange={this.onFilteredChange}
+						columns={this.getColumns()}
+						defaultPageSize={12}
+						defaultFilterMethod={this.defaultFilterMethod}
+						filterable
+						className='-striped -highlight'
+						showPageSizeOptions={false}
+						noDataText={'No packages found'}
+					/>
+				</Col></Row>
+			</article>
+			);
+		}
 	}
 }
 
 PackageTable.propTypes = {
-		packages: PropTypes.arrayOf(PropTypes.object),
-		stateDisplayMap: PropTypes.arrayOf(PropTypes.object)
+	stateDisplayMap: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default PackageTable;

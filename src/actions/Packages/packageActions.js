@@ -4,34 +4,27 @@ import { sendMessageToBackend } from '../Error/errorActions';
 
 const api = Api.getInstance();
 
-export const getPackages = () => {
-    return (dispatch) => {
-        api.get('/api/v1/packages?shouldExclude=false')
-            .then(res => {
-                dispatch(setPackages(res.data));
-            })
-            .catch(err => {
-                dispatch(sendMessageToBackend(err));
-            });
-    };
-}
+export const getPackagesStateless = () => {
+    
+    return api.get('/api/v1/packages?shouldExclude=false')
+        .then(res=> {
+            return res.data
+        })
+        .catch(error => {
+            console.log(error)
+            alert("We hit an error getting packages...talk to a dev.")
+        });
+}   
 
 export const movePackageFiles = (packageId) => {
     return (dispatch) => {
         api.post('/api/v1/packages/' + packageId + '/files/move')
             .then(res => {
-                alert(res.data);
+                alert("Package marked as ready to move.");
             })
             .catch(err => {
                 alert("There was a problem moving the files.");
             });
-    }
-}
-
-export const setPackages = (packages) => {
-    return {
-        type: actionNames.SET_PACKAGES,
-        payload: packages
     }
 }
 
