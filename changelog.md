@@ -1,8 +1,17 @@
 # Changelog
 
-## Release 1.9 [unreleased]
-Brief summary of what's in this release:
+## Release 1.10 [Unreleased]
+Brief summary:
 
+### Breaking changes
+
+### Other changes
+
+---
+
+## Release 1.9 [Released 8/2/2025]
+Brief summary of what's in this release:
+- no notable changes, keeping front and back end version numbers in sync
 
 ### Breaking changes
 
