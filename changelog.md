@@ -9,7 +9,7 @@ Brief summary:
 
 ---
 
-## Release 1.9 [Released 8/2/2025]
+## Release 1.9 [Released 9/2/2025]
 Brief summary of what's in this release:
 - no notable changes, keeping front and back end version numbers in sync
 
