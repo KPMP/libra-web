@@ -1,7 +1,9 @@
 # Changelog
 
-## Release 1.10 [Unreleased]
+## Release 1.10 
 Brief summary:
+- No noteable changes, keeping front and backend version numbers in sync
+
 
 ### Breaking changes
 
