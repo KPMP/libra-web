@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class BulkUpload extends Component {
-    constructor(props) {
-
-    }
     render() {
         return (
             <div>
@@ -12,3 +9,4 @@ class BulkUpload extends Component {
         );
     }
 }
+export default BulkUpload;
