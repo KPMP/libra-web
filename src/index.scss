@@ -31,6 +31,71 @@
   }
 }
 
+.dropzone {
+	padding-bottom: 15px;
+	.react-fine-uploader-gallery-dropzone, .react-fine-uploader-gallery-nodrop-container {
+		min-height: 120px;
+	}
+
+	.react-fine-uploader-gallery-file-input-container {
+		background-color: #0275d8;
+		border: 1px solid #0275d8;
+	}
+
+	.react-fine-uploader-gallery-file-input-container:hover {
+		background-color: #286090;
+		border: 1px solid #204d74;
+	}
+	.react-fine-uploader-gallery-retry-button {
+		display: none;
+	}
+	.react-fine-uploader-gallery-pause-resume-button {
+		display: none;
+	}
+	.react-fine-uploader-gallery-cancel-button {
+		&.cancel-disabled {
+			display: none;
+		}
+	}
+	.attachment-modal-dropzone {
+		max-height: 100px;
+	}
+}
+
+#dynamicUploadForm {
+
+	.submitterInfo {
+		min-height: 0px;
+		padding-bottom: 15px;
+		padding-left: 15px;
+	}
+
+	div[class^='col-md-'], div[class^='col-lg-'],div[class^='col-xl-'], div[class^='col-sm-']  {
+		min-height: 86px;
+	}
+	
+	.textArea {
+		min-height: 115px;
+	}
+	
+	textarea.ant-input {
+		margin-top: 4px;
+	}
+}
+
+.upload-form-section {
+	h4 {
+		background-color: #cce5ff;
+		border-radius: 5px;
+		padding: 5px;
+	}
+}
+
+#form-footer {
+	background: #CCCCCC;
+	justify-content: center;
+}
+
 .ag-theme-material {
 
   $odd-cell-background-color:  #cee5ff;
@@ -74,6 +139,10 @@
     background-color: white !important;
   }
 
+}
+
+.img-fluid{
+    padding-bottom: 10px
 }
 
 #not-found-page {

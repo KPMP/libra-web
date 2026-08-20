@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import {Row, Col, Input, Container, Button} from 'reactstrap';
+import {Row, Col, Input, Button} from 'reactstrap';
 import { AgGridReact } from 'ag-grid-react';
 import { ModuleRegistry, AllCommunityModule } from "ag-grid-community";
+import FileDropzone from './FileDropzone';
+import { getUploader} from './fineUploader';
+import { Link } from 'react-router-dom';
 ModuleRegistry.registerModules([ AllCommunityModule ]);
+let uploader = getUploader(0)
 class BulkUpload extends Component {
     constructor(props) {
         super(props);
+        this.fileIds = new Set();
         this.state = {
             rowData: [
                 {property: false, name: "Globus only", stateKey: "globusOnly", description: "Create packages in the data lake, move files into Globus, but do not put them in data lake. This leaves the packages available for data manager to review"},
@@ -15,8 +20,30 @@ class BulkUpload extends Component {
             globusOnly: false,
             preservePath: false,
             bypassDups: false,
-            submitDisabled: false,
+            hasFiles: false,
         };
+    }
+
+    componentDidMount() {
+        uploader.on('statusChange', this.handleUploadStatusChange);
+    }
+
+    componentWillUnmount() {
+        uploader.off('statusChange', this.handleUploadStatusChange);
+    }
+
+    handleUploadStatusChange = (id, oldStatus, status) => {
+        const removedStatuses = [
+            uploader.qq.status.CANCELED,
+            uploader.qq.status.REJECTED,
+        ];
+        if (removedStatuses.includes(status)) {
+            this.fileIds.delete(id);
+        } else {
+            this.fileIds.add(id);
+        }
+
+        this.setState({hasFiles: this.fileIds.size > 0});
     }
 
     handleOptionChange = (row, checked) => {
@@ -41,6 +68,12 @@ class BulkUpload extends Component {
         alert(message);
     }
 
+    isFormValid() {
+
+	}
+    isSubmitDisabled = () => {
+        return !this.state.hasFiles;
+    }
     getColumns = () => {
         let columns = [];
         columns.push(
@@ -81,31 +114,38 @@ class BulkUpload extends Component {
 
     render() {
         return (
-            <div className='height-wrapper mb-3 mt-3'>
-                <Container id='outer-wrapper'>
-                    <Row xs='12' id="uploadOptionsTable">
-                        <Col xs='12'>
-                            <div className="ag-theme-material img-fluid">
-                                <AgGridReact
-                                    rowData={this.state.rowData}
-                                    columnDefs={this.getColumns()}
-                                    domLayout='autoHeight'
-                                    onGridReady={this.onGridReady}
-                                    autoSizeStrategy={{type: 'fitGridWidth'}}
-                                />
-                            </div>
-                                            
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs='12' className='text-center mt-3'>
-                            <Button color='primary' onClick={this.handleSubmit}>
-                                Submit
-                            </Button>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+            <article id="dynamicUploadForm" className="upload-form-section container justify-content-center pt-4">
+                <h4>STEP 1: Provide the upload information</h4>
+                    <div className="ag-theme-material img-fluid">
+                        <AgGridReact
+                            rowData={this.state.rowData}
+                            columnDefs={this.getColumns()}
+                            domLayout='autoHeight'
+                            onGridReady={this.onGridReady}
+                            autoSizeStrategy={{type: 'fitGridWidth'}}
+                            id="uploadOptionsTable"
+                        />
+                    </div>
+                <h4>STEP 2: Add YAML/YML files only</h4>
+                    <Row className={"dropzone btn-sm"}>
+					    <Col md={12}>
+						    <FileDropzone uploader={uploader} isUploading={this.props.isUploading}/>
+					    </Col>
+				    </Row>
+                <h4>STEP 3: Submit the upload</h4>                  
+                <Row className="fixed-bottom pt-4" id="form-footer">
+					<div className="container justify-content-center">
+						<Row className="text-center">
+							<Col md={12}>
+								<Link to="/">
+									<Button id="cancel" className="mr-3">Cancel</Button>
+								</Link>
+								<Button id="submit" disabled={this.isSubmitDisabled()} type="primary" onClick={this.handleSubmit}>Upload</Button>
+							</Col>
+						</Row>
+					</div>
+				</Row>
+            </article>
         );
     }
 }
