@@ -6,6 +6,8 @@
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-solid-svg-icons": "5.15.4",
     "@fortawesome/react-fontawesome": "0.1.16",
+    "ag-grid-community": "^36.1.0",
+    "ag-grid-react": "^36.1.0",
     "axios": "1.4.0",
     "babel-eslint": "10.1.0",
     "babel-polyfill": "6.26.0",
