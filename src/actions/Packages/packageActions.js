@@ -46,3 +46,10 @@ export const getStateDisplayMap = () => {
             });
     };
 }
+
+export const setIsUploading = (isUploading) => {
+	return {
+		type: actionNames.SET_IS_UPLOADING,
+		payload: isUploading
+	}
+};

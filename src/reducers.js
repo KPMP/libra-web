@@ -5,11 +5,13 @@ import { stateDisplayMap } from './components/PackageDashboard/stateDisplayMapRe
 import { filenameValidation } from './components/Validation/filenameValidationReducer';
 import actionNames from './actions/actionNames';
 import loadedState from './initialState';
+import {isUploading} from "./components/Upload/UploadReducer"
 
 const appReducer = combineReducers({
 	filenameValidation,
 	resetStateReducer,
 	stateDisplayMap,
+	isUploading,
 	packages
 });
 
