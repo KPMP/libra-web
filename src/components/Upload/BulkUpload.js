@@ -15,21 +15,23 @@ class BulkUpload extends Component {
         uploader.methods.reset();
 		uploader.params = { hostname: window.location.hostname }
 
-		uploader.on('submit', () => {
+        this.handleFileSubmit = () => {
 			let newCount = this.state.filesAdded + 1;
 			this.setState( { filesAdded: newCount } );
 			this.isSubmitDisabled();
 			return true;
-		});
+        };
+        uploader.on('submit', this.handleFileSubmit);
 
-		uploader.on('cancel', () => {
+        this.handleFileCancel = () => {
 			let newCount = this.state.filesAdded - 1;
 			this.setState( { filesAdded: newCount });
 			this.isSubmitDisabled();
 			return true;
-		});
+        };
+        uploader.on('cancel', this.handleFileCancel);
 
-		uploader.on('submit', (id, name) => {
+        this.validateFileSubmit = (id, name) => {
 			let files = uploader.methods.getUploads({
 			status: [ qq.status.SUBMITTED, qq.status.PAUSED ]});
 
@@ -41,14 +43,16 @@ class BulkUpload extends Component {
 				}
 			}
 			return true;
-		});
+        };
+        uploader.on('submit', this.validateFileSubmit);
 
-		uploader.on('validateBatch', () => {
+        this.validateUploadBatch = () => {
 			if (this.state.submitClicked) {
 				return false;
 			}
 			return true;
-		})
+        };
+        uploader.on('validateBatch', this.validateUploadBatch);
 
         this.state = {
             rowData: [
@@ -71,6 +75,10 @@ class BulkUpload extends Component {
 
     componentWillUnmount() {
         uploader.off('statusChange', this.handleUploadStatusChange);
+        uploader.off('submit', this.handleFileSubmit);
+        uploader.off('cancel', this.handleFileCancel);
+        uploader.off('submit', this.validateFileSubmit);
+        uploader.off('validateBatch', this.validateUploadBatch);
     }
 
     handleUploadStatusChange = (id, oldStatus, status) => {
@@ -85,6 +93,10 @@ class BulkUpload extends Component {
         }
 
         this.setState({hasFiles: this.fileIds.size > 0});
+        const activeUploads = uploader.methods.getUploads({
+            status: [uploader.qq.status.UPLOADING]
+        });
+        this.props.setIsUploading(activeUploads.length > 0);
     }
 
     handleOptionChange = (row, checked) => {
@@ -108,6 +120,7 @@ class BulkUpload extends Component {
             : 'You did not select any options.';
 
         alert(message);
+        uploader.methods.uploadStoredFiles();
     }
 
     isFormValid() {
