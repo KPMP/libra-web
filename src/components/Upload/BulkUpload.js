@@ -5,12 +5,51 @@ import { ModuleRegistry, AllCommunityModule } from "ag-grid-community";
 import FileDropzone from './FileDropzone';
 import { getUploader} from './fineUploader';
 import { Link } from 'react-router-dom';
+import qq from 'fine-uploader/lib/core';
 ModuleRegistry.registerModules([ AllCommunityModule ]);
 let uploader = getUploader(0)
 class BulkUpload extends Component {
     constructor(props) {
         super(props);
         this.fileIds = new Set();
+        uploader.methods.reset();
+		uploader.params = { hostname: window.location.hostname }
+
+		uploader.on('submit', () => {
+			let newCount = this.state.filesAdded + 1;
+			this.setState( { filesAdded: newCount } );
+			this.isSubmitDisabled();
+			return true;
+		});
+
+		uploader.on('cancel', () => {
+			let newCount = this.state.filesAdded - 1;
+			this.setState( { filesAdded: newCount });
+			this.isSubmitDisabled();
+			return true;
+		});
+
+		uploader.on('submit', (id, name) => {
+			let files = uploader.methods.getUploads({
+			status: [ qq.status.SUBMITTED, qq.status.PAUSED ]});
+
+			for(let fileIndex in files) {
+				let existingName = files[fileIndex].name;
+				if (existingName === name) {
+					alert("You have already selected " + existingName + " to upload.");
+					return false;
+				}
+			}
+			return true;
+		});
+
+		uploader.on('validateBatch', () => {
+			if (this.state.submitClicked) {
+				return false;
+			}
+			return true;
+		})
+
         this.state = {
             rowData: [
                 {property: false, name: "Globus only", stateKey: "globusOnly", description: "Create packages in the data lake, move files into Globus, but do not put them in data lake. This leaves the packages available for data manager to review"},
@@ -21,6 +60,8 @@ class BulkUpload extends Component {
             preservePath: false,
             bypassDups: false,
             hasFiles: false,
+            submitClicked: false,
+            filesAdded: 0
         };
     }
 
@@ -58,6 +99,7 @@ class BulkUpload extends Component {
     }
 
     handleSubmit = () => {
+        this.setState({submitClicked: true});
         const selectedOptions = this.state.rowData
             .filter((row) => row.property)
             .map((row) => row.name);
@@ -73,6 +115,7 @@ class BulkUpload extends Component {
 	}
     isSubmitDisabled = () => {
         return !this.state.hasFiles;
+
     }
     getColumns = () => {
         let columns = [];
@@ -140,7 +183,7 @@ class BulkUpload extends Component {
 								<Link to="/">
 									<Button id="cancel" className="mr-3">Cancel</Button>
 								</Link>
-								<Button id="submit" disabled={this.isSubmitDisabled()} type="primary" onClick={this.handleSubmit}>Upload</Button>
+								<Button id="submit" disabled={this.isSubmitDisabled()} color="primary" onClick={this.handleSubmit}>Submit</Button>
 							</Col>
 						</Row>
 					</div>
