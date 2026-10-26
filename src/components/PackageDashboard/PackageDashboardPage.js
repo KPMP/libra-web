@@ -17,6 +17,9 @@ class PackageDashboardPage extends Component {
 						<Link className='float-right' to='/filenameValidation'>
 							<Button color="primary">Validate Filenames</Button>
 						</Link>
+                        <Link id='bulk-upload-button' className="float-right" to='/bulkUpload'>
+                            <Button  color="secondary">Bulk Upload</Button>
+                        </Link>
 					</Col>
 				</Row>
 				<Row className='mt-3'>
