@@ -110,17 +110,30 @@ class BulkUpload extends Component {
         }));
     }
 
-    handleSubmit = () => {
+    handleSubmit = async () => {
         this.setState({submitClicked: true});
         const selectedOptions = this.state.rowData
             .filter((row) => row.property)
             .map((row) => row.name);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                globusOnly: this.state.globusOnly,
+                preservePath: this.state.preservePath,
+                bypassDups: this.state.bypassDups
+            })
+        };
+        const response = await fetch("v1/dlu/bulkUpload/", requestOptions);
+        const data = await response.json();
         const message = selectedOptions.length > 0
-            ? `You selected: ${selectedOptions.join(', ')}`
-            : 'You did not select any options.';
-
-        alert(message);
-        uploader.methods.uploadStoredFiles();
+        ? `You selected: ${selectedOptions.join(', ')}`
+        : 'You did not select any options.';
+        if (data === 200){
+            alert("Upload request submitted successfully.\n" + message);
+        }else {
+            alert("Upload request failed with status: " + data + "\n" + message);
+        }
     }
 
     isFormValid() {
