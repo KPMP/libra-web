@@ -125,6 +125,7 @@ class BulkUpload extends Component {
                 bypassDups: this.state.bypassDups
             })
         };
+        console.log(requestOptions)
         const response = await fetch("v1/dlu/bulkUpload/", requestOptions);
         const data = await response.json();
         // const message = selectedOptions.length > 0
