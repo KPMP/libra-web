@@ -119,11 +119,11 @@ class BulkUpload extends Component {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                globusOnly: this.state.globusOnly,
-                preservePath: this.state.preservePath,
-                bypassDups: this.state.bypassDups
-            })
+            body: {
+                "globusOnly": this.state.globusOnly,
+                "preservePath": this.state.preservePath,
+                "bypassDups": this.state.bypassDups
+            }
         };
         console.log(requestOptions)
         const response = await fetch("v1/dlu/bulkUpload/", requestOptions);
