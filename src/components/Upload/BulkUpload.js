@@ -127,6 +127,9 @@ class BulkUpload extends Component {
         const response = await fetch("v1/dlu/bulkUpload/", requestOptions);
         const data = await response.json();
         const message = selectedOptions.length > 0
+        console.log(response)
+        console.log(data)
+        // console.log(message)
         ? `You selected: ${selectedOptions.join(', ')}`
         : 'You did not select any options.';
         if (data === 200){
