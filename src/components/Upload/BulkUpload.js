@@ -115,6 +115,7 @@ class BulkUpload extends Component {
         const selectedOptions = this.state.rowData
             .filter((row) => row.property)
             .map((row) => row.name);
+        console.log(this.state)
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
